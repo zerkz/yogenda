@@ -1,8 +1,14 @@
-### Pup
-A boilerplate for products.
+### YOGENDA.  
+What's your YOGA AGENDA.
 
-[Read the Documentation](http://cleverbeagle.com/pup)
+DO YOU KNOW?
+
+You will soon.
+
+![DEAL WITH ITTTTTTT](http://vignette3.wikia.nocookie.net/powerlisting/images/0/02/Bach-deal-with-it.jpg/revision/latest?cb=20130822031533)
+
+
 
 ---
 
-Need help and want to stay accountable building your product? [Check out Clever Beagle](http://cleverbeagle.com).
+Based upon the Meteor starter kit [Pup](http://cleverbeagle.com/pup)
