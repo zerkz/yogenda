@@ -1,5 +1,5 @@
 ### YOGENDA.  
-What's your YOGA AGENDA.
+What's your YOGA AGENDA?
 
 DO YOU KNOW?
 
