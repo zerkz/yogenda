@@ -7,7 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
 
-class DocumentEditor extends React.Component {
+class YogaEventEditor extends React.Component {
   componentDidMount() {
     const component = this;
     validate(component.form, {
@@ -33,23 +33,23 @@ class DocumentEditor extends React.Component {
 
   handleSubmit() {
     const { history } = this.props;
-    const existingDocument = this.props.doc && this.props.doc._id;
-    const methodToCall = existingDocument ? 'documents.update' : 'documents.insert';
+    const existingYogaEvent = this.props.doc && this.props.doc._id;
+    const methodToCall = existingYogaEvent ? 'yogaEvents.update' : 'yogaEvents.insert';
     const doc = {
       title: this.title.value.trim(),
       body: this.body.value.trim(),
     };
 
-    if (existingDocument) doc._id = existingDocument;
+    if (existingYogaEvent) doc._id = existingYogaEvent;
 
-    Meteor.call(methodToCall, doc, (error, documentId) => {
+    Meteor.call(methodToCall, doc, (error, yogaEventId) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        const confirmation = existingDocument ? 'Document updated!' : 'Document added!';
+        const confirmation = existingYogaEvent ? 'YogaEvent updated!' : 'YogaEvent added!';
         this.form.reset();
         Bert.alert(confirmation, 'success');
-        history.push(`/documents/${documentId}`);
+        history.push(`/yogaEvents/${yogaEventId}`);
       }
     });
   }
@@ -79,19 +79,19 @@ class DocumentEditor extends React.Component {
         />
       </FormGroup>
       <Button type="submit" bsStyle="success">
-        {doc && doc._id ? 'Save Changes' : 'Add Document'}
+        {doc && doc._id ? 'Save Changes' : 'Add YogaEvent'}
       </Button>
     </form>);
   }
 }
 
-DocumentEditor.defaultProps = {
+YogaEventEditor.defaultProps = {
   doc: { title: '', body: '' },
 };
 
-DocumentEditor.propTypes = {
+YogaEventEditor.propTypes = {
   doc: PropTypes.object,
   history: PropTypes.object.isRequired,
 };
 
-export default DocumentEditor;
+export default YogaEventEditor;

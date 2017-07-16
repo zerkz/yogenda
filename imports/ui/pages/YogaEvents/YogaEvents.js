@@ -6,30 +6,30 @@ import { timeago, monthDayYearAtTime } from '@cleverbeagle/dates';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
-import DocumentsCollection from '../../../api/Documents/Documents';
+import YogaEventsCollection from '../../../api/YogaEvents/YogaEvents';
 import Loading from '../../components/Loading/Loading';
 
-import './Documents.scss';
+import './YogaEvents.scss';
 
-const handleRemove = (documentId) => {
+const handleRemove = (eventId) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('documents.remove', documentId, (error) => {
+    Meteor.call('events.remove', eventId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Document deleted!', 'success');
+        Bert.alert('YogaEvent deleted!', 'success');
       }
     });
   }
 };
 
-const Documents = ({ loading, documents, match, history }) => (!loading ? (
-  <div className="Documents">
+const YogaEvents = ({ loading, events, match, history }) => (!loading ? (
+  <div className="YogaEvents">
     <div className="page-header clearfix">
-      <h4 className="pull-left">Documents</h4>
-      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Document</Link>
+      <h4 className="pull-left">YogaEvents</h4>
+      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add YogaEvent</Link>
     </div>
-    {documents.length ? <Table responsive>
+    {events.length ? <Table responsive>
       <thead>
         <tr>
           <th>Title</th>
@@ -40,7 +40,7 @@ const Documents = ({ loading, documents, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {documents.map(({ _id, title, createdAt, updatedAt }) => (
+        {events.map(({ _id, title, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
@@ -62,21 +62,21 @@ const Documents = ({ loading, documents, match, history }) => (!loading ? (
           </tr>
         ))}
       </tbody>
-    </Table> : <Alert bsStyle="warning">No documents yet!</Alert>}
+    </Table> : <Alert bsStyle="warning">No events yet!</Alert>}
   </div>
 ) : <Loading />);
 
-Documents.propTypes = {
+YogaEvents.propTypes = {
   loading: PropTypes.bool.isRequired,
-  documents: PropTypes.arrayOf(PropTypes.object).isRequired,
+  events: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default createContainer(() => {
-  const subscription = Meteor.subscribe('documents');
+  const subscription = Meteor.subscribe('events');
   return {
     loading: !subscription.ready(),
-    documents: DocumentsCollection.find().fetch(),
+    events: YogaEventsCollection.find().fetch(),
   };
-}, Documents);
+}, YogaEvents);

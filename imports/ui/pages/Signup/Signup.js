@@ -72,7 +72,7 @@ class Signup extends React.Component {
         Bert.alert(error.reason, 'danger');
       } else {
         Bert.alert('Welcome!', 'success');
-        history.push('/documents');
+        history.push('/events');
       }
     });
   }

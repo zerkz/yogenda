@@ -4,25 +4,25 @@ import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import Documents from '../../../api/Documents/Documents';
+import YogaEvents from '../../../api/YogaEvents/YogaEvents';
 import NotFound from '../NotFound/NotFound';
 import Loading from '../../components/Loading/Loading';
 
-const handleRemove = (documentId, history) => {
+const handleRemove = (eventId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('documents.remove', documentId, (error) => {
+    Meteor.call('events.remove', eventId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Document deleted!', 'success');
-        history.push('/documents');
+        Bert.alert('YogaEvent deleted!', 'success');
+        history.push('/events');
       }
     });
   }
 };
 
-const renderDocument = (doc, match, history) => (doc ? (
-  <div className="ViewDocument">
+const renderYogaEvent = (doc, match, history) => (doc ? (
+  <div className="ViewYogaEvent">
     <div className="page-header clearfix">
       <h4 className="pull-left">{ doc && doc.title }</h4>
       <ButtonToolbar className="pull-right">
@@ -38,11 +38,11 @@ const renderDocument = (doc, match, history) => (doc ? (
   </div>
 ) : <NotFound />);
 
-const ViewDocument = ({ loading, doc, match, history }) => (
-  !loading ? renderDocument(doc, match, history) : <Loading />
+const ViewYogaEvent = ({ loading, doc, match, history }) => (
+  !loading ? renderYogaEvent(doc, match, history) : <Loading />
 );
 
-ViewDocument.propTypes = {
+ViewYogaEvent.propTypes = {
   loading: PropTypes.bool.isRequired,
   doc: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
@@ -50,11 +50,11 @@ ViewDocument.propTypes = {
 };
 
 export default createContainer(({ match }) => {
-  const documentId = match.params._id;
-  const subscription = Meteor.subscribe('documents.view', documentId);
+  const eventId = match.params._id;
+  const subscription = Meteor.subscribe('events.view', eventId);
 
   return {
     loading: !subscription.ready(),
-    doc: Documents.findOne(documentId) || {},
+    doc: YogaEvents.findOne(eventId) || {},
   };
-}, ViewDocument);
+}, ViewYogaEvent);

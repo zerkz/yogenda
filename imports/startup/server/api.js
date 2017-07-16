@@ -1,5 +1,5 @@
-import '../../api/Documents/methods';
-import '../../api/Documents/server/publications';
+import '../../api/YogaEvents/methods';
+import '../../api/YogaEvents/server/publications';
 
 import '../../api/OAuth/server/methods';
 

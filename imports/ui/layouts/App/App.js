@@ -9,10 +9,10 @@ import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
 import Public from '../../components/Public/Public';
 import Index from '../../pages/Index/Index';
-import Documents from '../../pages/Documents/Documents';
-import NewDocument from '../../pages/NewDocument/NewDocument';
-import ViewDocument from '../../pages/ViewDocument/ViewDocument';
-import EditDocument from '../../pages/EditDocument/EditDocument';
+import YogaEvents from '../../pages/YogaEvents/YogaEvents';
+import NewYogaEvent from '../../pages/NewYogaEvent/NewYogaEvent';
+import ViewYogaEvent from '../../pages/ViewYogaEvent/ViewYogaEvent';
+import EditYogaEvent from '../../pages/EditYogaEvent/EditYogaEvent';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -34,10 +34,10 @@ const App = props => (
       <Grid>
         <Switch>
           <Route exact name="index" path="/" component={Index} />
-          <Authenticated exact path="/documents" component={Documents} {...props} />
-          <Authenticated exact path="/documents/new" component={NewDocument} {...props} />
-          <Authenticated exact path="/documents/:_id" component={ViewDocument} {...props} />
-          <Authenticated exact path="/documents/:_id/edit" component={EditDocument} {...props} />
+          <Authenticated exact path="/yogaEvents" component={YogaEvents} {...props} />
+          <Authenticated exact path="/yogaEvents/new" component={NewYogaEvent} {...props} />
+          <Authenticated exact path="/yogaEvents/:_id" component={ViewYogaEvent} {...props} />
+          <Authenticated exact path="/yogaEvents/:_id/edit" component={EditYogaEvent} {...props} />
           <Authenticated exact path="/profile" component={Profile} {...props} />
           <Public path="/signup" component={Signup} {...props} />
           <Public path="/login" component={Login} {...props} />

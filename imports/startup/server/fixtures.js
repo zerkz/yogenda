@@ -1,17 +1,17 @@
 import seeder from '@cleverbeagle/seeder';
 import { Meteor } from 'meteor/meteor';
-import Documents from '../../api/Documents/Documents';
+import YogaEvents from '../../api/YogaEvents/YogaEvents';
 
-const documentsSeed = userId => ({
-  collection: Documents,
+const yogaEventsSeed = userId => ({
+  collection: YogaEvents,
   environments: ['development', 'staging'],
   noLimit: true,
   modelCount: 5,
   model(dataIndex) {
     return {
       owner: userId,
-      title: `Document #${dataIndex + 1}`,
-      body: `This is the body of document #${dataIndex + 1}`,
+      title: `YogaEvent #${dataIndex + 1}`,
+      body: `This is the body of yogaEvent #${dataIndex + 1}`,
     };
   },
 });
@@ -30,7 +30,7 @@ seeder(Meteor.users, {
     },
     roles: ['admin'],
     data(userId) {
-      return documentsSeed(userId);
+      return yogaEventsSeed(userId);
     },
   }],
   modelCount: 5,
@@ -47,7 +47,7 @@ seeder(Meteor.users, {
       },
       roles: ['user'],
       data(userId) {
-        return documentsSeed(userId);
+        return yogaEventsSeed(userId);
       },
     };
   },
