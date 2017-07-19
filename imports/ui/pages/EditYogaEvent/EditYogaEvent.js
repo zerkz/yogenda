@@ -20,7 +20,7 @@ EditYogaEvent.propTypes = {
 
 export default createContainer(({ match }) => {
   const eventId = match.params._id;
-  const subscription = Meteor.subscribe('events.view', eventId);
+  const subscription = Meteor.subscribe('yogaEvents.view', eventId);
 
   return {
     loading: !subscription.ready(),

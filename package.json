@@ -1,8 +1,9 @@
 {
-  "name": "pup",
+  "name": "yogenda",
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json",
+    "ios" : "meteor run ios --settings settings-development.json",
     "test": "jest"
   },
   "dependencies": {

@@ -13,7 +13,7 @@ import './YogaEvents.scss';
 
 const handleRemove = (eventId) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('events.remove', eventId, (error) => {
+    Meteor.call('yogaEvents.remove', eventId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
@@ -23,13 +23,13 @@ const handleRemove = (eventId) => {
   }
 };
 
-const YogaEvents = ({ loading, events, match, history }) => (!loading ? (
+const YogaEvents = ({ loading, yogaEvents, match, history }) => (!loading ? (
   <div className="YogaEvents">
     <div className="page-header clearfix">
       <h4 className="pull-left">YogaEvents</h4>
       <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add YogaEvent</Link>
     </div>
-    {events.length ? <Table responsive>
+    {yogaEvents.length ? <Table responsive>
       <thead>
         <tr>
           <th>Title</th>
@@ -40,7 +40,7 @@ const YogaEvents = ({ loading, events, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {events.map(({ _id, title, createdAt, updatedAt }) => (
+        {yogaEvents.map(({ _id, title, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
@@ -62,21 +62,21 @@ const YogaEvents = ({ loading, events, match, history }) => (!loading ? (
           </tr>
         ))}
       </tbody>
-    </Table> : <Alert bsStyle="warning">No events yet!</Alert>}
+    </Table> : <Alert bsStyle="warning">No yogaEvents yet!</Alert>}
   </div>
 ) : <Loading />);
 
 YogaEvents.propTypes = {
   loading: PropTypes.bool.isRequired,
-  events: PropTypes.arrayOf(PropTypes.object).isRequired,
+  yogaEvents: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default createContainer(() => {
-  const subscription = Meteor.subscribe('events');
+  const subscription = Meteor.subscribe('yogaEvents');
   return {
     loading: !subscription.ready(),
-    events: YogaEventsCollection.find().fetch(),
+    yogaEvents: YogaEventsCollection.find().fetch(),
   };
 }, YogaEvents);

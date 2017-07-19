@@ -10,12 +10,12 @@ import Loading from '../../components/Loading/Loading';
 
 const handleRemove = (eventId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('events.remove', eventId, (error) => {
+    Meteor.call('yogaEvents.remove', eventId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
         Bert.alert('YogaEvent deleted!', 'success');
-        history.push('/events');
+        history.push('/yogaEvents');
       }
     });
   }
@@ -51,7 +51,7 @@ ViewYogaEvent.propTypes = {
 
 export default createContainer(({ match }) => {
   const eventId = match.params._id;
-  const subscription = Meteor.subscribe('events.view', eventId);
+  const subscription = Meteor.subscribe('yogaEvents.view', eventId);
 
   return {
     loading: !subscription.ready(),
