@@ -1,6 +1,13 @@
+@import './../../stylesheets/colors';
+
 .navbar {
   border-radius: 0;
   border-left: none;
   border-right: none;
   border-top: none;
+  background-color: $uship-blue;
+}
+
+.navbar-default .navbar-brand {
+    color: $light-gray;
 }

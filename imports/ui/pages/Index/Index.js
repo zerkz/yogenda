@@ -12,7 +12,7 @@ const Index = () => (
     <h1>Yogenda</h1>
     <p>Flexible Yoga Scheduling</p>
     <div>
-      <Button href="http://cleverbeagle.com/pup">Read the docs.... yo.</Button>
+      <Button bsStyle="success" href="http://cleverbeagle.com/pup">Read the docs.... yo.</Button>
     </div>
   </div>
 );

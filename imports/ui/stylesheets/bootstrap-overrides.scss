@@ -1,7 +1,19 @@
 @import './mixins';
+@import './colors';
 
 .page-header {
   margin-top: 0;
+}
+
+.btn {
+	background-color: $uship-blue;
+	border-color: $uship-blue;
+}
+
+.btn:hover, .btn:focus, .btn:active, .btn.active, .open>.dropdown-toggle.btn {
+    color: #fff;
+    background-color: $bright-blue;
+    border-color: $bright-blue; /*set the color you want here*/
 }
 
 @include breakpoint(tablet) {
