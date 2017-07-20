@@ -2,20 +2,14 @@
   "public": {},
   "private": {
     "MAIL_URL": "",
+    "email_provider_restriction" : "",
     "OAuth": {
-      "facebook": {
-        "appId": "",
-        "secret": "",
-        "loginStyle": "popup"
-      },
-      "google": {
-        "clientId": "",
-        "secret": "",
-        "loginStyle": "popup"
-      },
-      "github": {
-        "clientId": "",
-        "secret": "",
+      "azureAd": {
+        "requestOfflineToken": false,
+        "clientId" : "",
+        "tenantId" : "",
+        "secret" : "",
+        "redirectUrl" : "http://localhost:3000/login",
         "loginStyle": "popup"
       }
     }

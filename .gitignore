@@ -1,4 +1,5 @@
 node_modules
 settings-demo.json
+settings-development-with-microsoft.json
 settings-staging.json
 settings-production.json
