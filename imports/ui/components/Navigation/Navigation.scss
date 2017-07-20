@@ -1,4 +1,5 @@
 @import './../../stylesheets/colors';
+@import './../../stylesheets/mixins';
 
 .navbar {
   border-radius: 0;
@@ -10,4 +11,12 @@
 
 .navbar-default .navbar-brand {
     color: $light-gray;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: $light-gray;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: darken($medium-gray, 30%);
 }
