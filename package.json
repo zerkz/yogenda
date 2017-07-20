@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json",
-    "ios" : "meteor run ios --settings settings-development.json",
+    "ms-dev": "meteor --settings settings-development-with-microsoft.json",
     "test": "jest"
   },
   "dependencies": {

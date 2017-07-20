@@ -58,33 +58,11 @@ class Login extends React.Component {
       <Row>
         <Col xs={12} sm={6} md={5} lg={4}>
           <h4 className="page-header">Log In</h4>
-          <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-            <FormGroup>
-              <ControlLabel>Email Address</ControlLabel>
-              <input
-                type="email"
-                name="emailAddress"
-                ref={emailAddress => (this.emailAddress = emailAddress)}
-                className="form-control"
-              />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel className="clearfix">
-                <span className="pull-left">Password</span>
-                <Link className="pull-right" to="/recover-password">Forgot password?</Link>
-              </ControlLabel>
-              <input
-                type="password"
-                name="password"
-                ref={password => (this.password = password)}
-                className="form-control"
-              />
-            </FormGroup>
-            <Button type="submit" bsStyle="success">Log In</Button>
-            <AccountPageFooter>
-              <p>{'Don\'t have an account?'} <Link to="/signup">Sign Up</Link>.</p>
-            </AccountPageFooter>
-          </form>
+          <Row>
+            <Col xs={12}>
+              <OAuthLoginButtons services={['azureAd']} />
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>);
