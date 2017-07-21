@@ -27,8 +27,8 @@ const renderYogaEvent = (doc, match, history) => (doc ? (
       <h4 className="pull-left">{ doc && doc.title }</h4>
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">
-          <Button onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
-          <Button onClick={() => handleRemove(doc._id, history)} className="text-danger">
+          <Button bsStyle="success" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
+          <Button bsStyle="success" onClick={() => handleRemove(doc._id, history)}>
             Delete
           </Button>
         </ButtonGroup>

@@ -6,14 +6,16 @@
 }
 
 .btn {
-	background-color: $uship-blue;
-	border-color: $uship-blue;
+	background-color: $green;
+	border-color: $green;
+	font-weight: bold;
+	font-color: $red;
 }
 
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open>.dropdown-toggle.btn {
     color: #fff;
-    background-color: $bright-blue;
-    border-color: $bright-blue; /*set the color you want here*/
+    background-color: darken($green, 5%);
+    border-color: darken($green, 5%);
 }
 
 @include breakpoint(tablet) {

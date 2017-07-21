@@ -27,8 +27,8 @@ const renderYogaClass = (yogaClass, match, history) => (yogaClass ? (
       <h4 className="pull-left">{ yogaClass && yogaClass.title }</h4>
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">
-          <Button onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
-          <Button onClick={() => handleRemove(yogaClass._id, history)} className="text-danger">
+          <Button bsStyle="success" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
+          <Button bsStyle="success" onClick={() => handleRemove(yogaClass._id, history)}>
             Delete
           </Button>
         </ButtonGroup>
