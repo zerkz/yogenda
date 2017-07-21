@@ -4,6 +4,7 @@
   "scripts": {
     "start": "meteor --settings settings-development.json",
     "ms-dev": "meteor --settings settings-development-with-microsoft.json",
+    "ms-debug" : "meteor debug --settings settings-development-with-microsoft.json",
     "test": "jest"
   },
   "dependencies": {

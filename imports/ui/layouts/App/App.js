@@ -9,10 +9,16 @@ import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
 import Public from '../../components/Public/Public';
 import Index from '../../pages/Index/Index';
+//events
 import YogaEvents from '../../pages/YogaEvents/YogaEvents';
 import NewYogaEvent from '../../pages/NewYogaEvent/NewYogaEvent';
 import ViewYogaEvent from '../../pages/ViewYogaEvent/ViewYogaEvent';
 import EditYogaEvent from '../../pages/EditYogaEvent/EditYogaEvent';
+//classes
+import YogaClasses from '../../pages/YogaClasses/YogaClasses';
+import NewYogaClass from '../../pages/NewYogaClass/NewYogaClass';
+import ViewYogaClass from '../../pages/ViewYogaClass/ViewYogaClass';
+import EditYogaClass from '../../pages/EditYogaClass/EditYogaClass';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -38,6 +44,10 @@ const App = props => (
           <Authenticated exact path="/yogaEvents/new" component={NewYogaEvent} {...props} />
           <Authenticated exact path="/yogaEvents/:_id" component={ViewYogaEvent} {...props} />
           <Authenticated exact path="/yogaEvents/:_id/edit" component={EditYogaEvent} {...props} />
+          <Authenticated exact path="/yogaClasses" component={YogaClasses} {...props} />
+          <Authenticated exact path="/yogaClasses/new" component={NewYogaClass} {...props} />
+          <Authenticated exact path="/yogaClasses/:_id" component={ViewYogaClass} {...props} />
+          <Authenticated exact path="/yogaClasses/:_id/edit" component={EditYogaClass} {...props} />
           <Authenticated exact path="/profile" component={Profile} {...props} />
           <Public path="/signup" component={Signup} {...props} />
           <Public path="/login" component={Login} {...props} />

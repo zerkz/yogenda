@@ -108,7 +108,10 @@ class Profile extends React.Component {
       {Object.keys(user.services).map(service => (
         <div key={service} className={`LoggedInWith ${service}`}>
           <div className="ServiceIcon"><i className={`fa fa-${service === 'facebook' ? 'facebook-official' : service}`} /></div>
-          <p>{`You're logged in with ${capitalize(service)} using the email address ${user.services[service].email}.`}</p>
+          <p>{`You're logged in with ${capitalize(service)} using the email address ${user.services[service].mail}.`}</p>
+          <div>
+
+          </div>
         </div>
       ))}
     </div>) : <div />;
