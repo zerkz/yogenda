@@ -26,7 +26,7 @@ const handleRemove = (eventId) => {
 const YogaEvents = ({ loading, yogaEvents, match, history }) => (!loading ? (
   <div className="YogaEvents">
     <div className="page-header clearfix">
-      <h4 className="pull-left">YogaEvents</h4>
+      <h4 className="pull-left">Yoga Events</h4>
       <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add YogaEvent</Link>
     </div>
     {yogaEvents.length ? <Table responsive>

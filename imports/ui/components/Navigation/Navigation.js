@@ -4,11 +4,19 @@ import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PublicNavigation from '../PublicNavigation/PublicNavigation';
 import AuthenticatedNavigation from '../AuthenticatedNavigation/AuthenticatedNavigation';
+import AdminNavigation from '../AdminNavigation/AdminNavigation';
 
 import './Navigation.scss';
 
-const Navigation = props => (
-  <Navbar>
+
+
+const Navigation = (props) => {
+
+  let nav = <PublicNavigation />;
+  if (props.authenticated) {
+     nav = props ? <AdminNavigation {...props}/> : <AuthenticatedNavigation {...props} />;
+  }
+  return <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
         <Link to="/">Yogenda</Link>
@@ -16,10 +24,10 @@ const Navigation = props => (
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
-      {!props.authenticated ? <PublicNavigation /> : <AuthenticatedNavigation {...props} />}
+      {nav}
     </Navbar.Collapse>
-  </Navbar>
-);
+  </Navbar>;
+};
 
 Navigation.defaultProps = {
   name: '',
@@ -27,6 +35,7 @@ Navigation.defaultProps = {
 
 Navigation.propTypes = {
   authenticated: PropTypes.bool.isRequired,
+  roles : PropTypes.array.isRequired,
 };
 
 export default Navigation;

@@ -1,7 +1,7 @@
+/**
 import seeder from '@cleverbeagle/seeder';
 import { Meteor } from 'meteor/meteor';
 import YogaEvents from '../../api/YogaEvents/YogaEvents';
-
 const yogaEventsSeed = userId => ({
   collection: YogaEvents,
   environments: ['development', 'staging'],
@@ -52,3 +52,4 @@ seeder(Meteor.users, {
     };
   },
 });
+**/

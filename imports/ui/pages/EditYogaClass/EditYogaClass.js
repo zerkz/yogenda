@@ -14,16 +14,16 @@ const EditYogaClass = ({ yogaClass, history }) => (yogaClass ? (
 ) : <NotFound />);
 
 EditYogaClass.propTypes = {
-  doc: PropTypes.object.isRequired,
+  yogaClass: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default createContainer(({ match }) => {
   const classId = match.params._id;
-  const subscription = Meteor.subscribe('yogaClass.view', classId);
+  const subscription = Meteor.subscribe('yogaClasses.view', classId);
 
   return {
     loading: !subscription.ready(),
-    doc: YogaClasses.findOne(classId),
+    yogaClass: YogaClasses.findOne(classId),
   };
 }, EditYogaClass);

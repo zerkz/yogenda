@@ -9,7 +9,7 @@
         "clientId" : "",
         "tenantId" : "",
         "secret" : "",
-        "redirectUrl" : "http://localhost:3000/login",
+        "redirectUri" : "http://localhost:3000/_oauth/azureAd",
         "loginStyle": "popup"
       }
     }

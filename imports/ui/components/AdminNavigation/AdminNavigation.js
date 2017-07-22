@@ -4,11 +4,14 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 
-const AuthenticatedNavigation = ({ name }) => (
+const AdminNavigation = ({ name }) => (
   <div>
     <Nav>
       <LinkContainer to="/yogaEvents">
         <NavItem eventKey={1} href="/yogaEvents">Yoga Events</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/yogaClasses">
+        <NavItem eventKey={1} href="/yogaClasses">Yoga Classes</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>
@@ -23,8 +26,8 @@ const AuthenticatedNavigation = ({ name }) => (
   </div>
 );
 
-AuthenticatedNavigation.propTypes = {
+AdminNavigation.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default AuthenticatedNavigation;
+export default AdminNavigation;
