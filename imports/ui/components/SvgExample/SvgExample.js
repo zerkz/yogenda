@@ -7,6 +7,49 @@ const renderSVG = svg => (
 const hoverStyle = { fill: '#0083BB' };
 const style = { fill: '#F4F4F4' };
 
+function bundleStyleBodyParts(bodyParts, id, applyStyle) {
+  if (id.includes('arm')) {
+    bodyParts['left_arm'].attr(applyStyle);
+    bodyParts['right_arm'].attr(applyStyle);
+  }
+  if (id.includes('leg')) {
+    bodyParts['left_leg'].attr(applyStyle);
+    bodyParts['right_leg'].attr(applyStyle);
+  }
+}
+
+function isBundle(id) {
+  return (id.includes('arm') || id.includes('leg'));
+}
+
+// Send id/body part clicked to database?
+function onClick(bodyParts, id) {
+  let partClicked = id;
+  if (id.includes('arm')) partClicked = 'arms';
+  if (id.includes('leg')) partClicked = 'legs';
+
+  return (() => console.log('Bodypart clicked: ' + partClicked));
+}
+
+function onHover(bodyParts, id) {
+  return (() => {
+    if (isBundle) {
+      bundleStyleBodyParts(bodyParts, id, hoverStyle);
+    }
+    bodyParts[id].attr(hoverStyle);
+  });
+}
+
+function offHover(bodyParts, id) {
+  return (() => {
+    if (isBundle) {
+      bundleStyleBodyParts(bodyParts, id, style);
+    }
+    bodyParts[id].attr(style);
+  });
+}
+
+
 export default SvgExample = () => {
   let bodyParts = {};
   const s = Snap('24in', '24in');
@@ -19,30 +62,18 @@ export default SvgExample = () => {
     bodyParts['right_leg'] = loadedFragment.select('#right_leg');
 
     // Define a "hover" function for each fragment
-    // fragment.hover(onhover, nohover)
-    // Must define left + right leg/arm in order to change fill atm
+    // Must define left + right leg/arm in order to change fill
     Object.keys(bodyParts).forEach((x) => {
-      bodyParts[x].hover(() => {
-        bodyParts[x].attr(hoverStyle);
-      }, () => {
-        bodyParts[x].attr(style);
-      });
+      bodyParts[x].hover(onHover(bodyParts, x), offHover(bodyParts, x));
     });
 
     // Define an onClick handler for each fragment
-    // TODO: Group legs/arms together
     Object.keys(bodyParts).forEach((x) => {
-      bodyParts[x].click(() => {
-        console.log('id clicked: ' + x);
-      });
+      bodyParts[x].click(onClick(bodyParts, x));
     });
 
-    // Append individual fragments to container
-    Object.keys(bodyParts).forEach((x) => {
-      s.append(bodyParts[x]);
-    });
+    s.append(loadedFragment);
   });
-
 
   return renderSVG(s);
 };
