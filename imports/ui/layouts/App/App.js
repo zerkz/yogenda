@@ -9,12 +9,12 @@ import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
 import Public from '../../components/Public/Public';
 import Index from '../../pages/Index/Index';
-//events
+// events
 import YogaEvents from '../../pages/YogaEvents/YogaEvents';
 import NewYogaEvent from '../../pages/NewYogaEvent/NewYogaEvent';
 import ViewYogaEvent from '../../pages/ViewYogaEvent/ViewYogaEvent';
 import EditYogaEvent from '../../pages/EditYogaEvent/EditYogaEvent';
-//classes
+// classes
 import YogaClasses from '../../pages/YogaClasses/YogaClasses';
 import NewYogaClass from '../../pages/NewYogaClass/NewYogaClass';
 import ViewYogaClass from '../../pages/ViewYogaClass/ViewYogaClass';
@@ -30,6 +30,7 @@ import Footer from '../../components/Footer/Footer';
 import Terms from '../../pages/Terms/Terms';
 import Privacy from '../../pages/Privacy/Privacy';
 import ExamplePage from '../../pages/ExamplePage/ExamplePage';
+import SvgPractice from '../../pages/SvgPractice/SvgPractice';
 
 import './App.scss';
 
@@ -57,6 +58,7 @@ const App = props => (
           <Route name="terms" path="/terms" component={Terms} />
           <Route name="privacy" path="/privacy" component={Privacy} />
           <Route name="examplePage" path="/example-page" component={ExamplePage} />
+          <Route name="svg" path="/svg" component={SvgPractice} />
           <Route component={NotFound} />
         </Switch>
       </Grid>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:se="http://svg-edit.googlecode.com"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:cc="http://creativecommons.org/ns#"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="500"
+height="500">                                    <title>my vector image</title>                                    <!--
+Created with Vector Paint - http://www.vectorpaint.yaks.com/
+https://chrome.google.com/webstore/detail/hnbpdiengicdefcjecjbnjnoifekhgdo -->
+<g id="full_body" class="currentLayer"><title>MR YOGA</title>
+<g id="arms"><rect fill="#F4F4F4" stroke="#262626"
+stroke-width="2" stroke-linejoin="round" stroke-dashoffset=""
+fill-rule="nonzero" id="left_arm" x="124.14960622787476" y="149" width="133"
+height="21" style="color: rgb(0, 0, 0);" class=""/>
+<rect fill="#F4F4F4"
+stroke="#262626" stroke-width="2" stroke-linejoin="round" stroke-dashoffset=""
+fill-rule="nonzero" x="332.3385925292969" y="147.7401580810547" width="133"
+height="21" style="color: rgb(0, 0, 0);" class="" id="right_arm"/>
+</g>
+<g id="torso">
+<rect
+fill="#F4F4F4" stroke="#262626" stroke-width="2" stroke-linejoin="round"
+stroke-dashoffset="" fill-rule="nonzero" id="torso_" x="260.36220479011536"
+y="125.03149795532227" width="65.70078706741333" height="119.18110227584839"
+style="color: rgb(0, 0, 0);" class=""/>
+</g>
+<g id="legs">
+<rect fill="#F4F4F4" stroke="#262626"
+stroke-width="2" stroke-linejoin="round" stroke-dashoffset=""
+fill-rule="nonzero" id="left_leg" x="251.8818907737732" y="246.2125984430313"
+width="31" height="120" style="color: rgb(0, 0, 0);" class=""/><rect
+fill="#F4F4F4" stroke="#262626" stroke-width="2" stroke-linejoin="round"
+stroke-dashoffset="" fill-rule="nonzero" x="306.52756118774414"
+y="244.952756524086" width="31" height="120" style="color: rgb(0, 0, 0);"
+class="" id="right_leg"/>
+</g>
+<g id="head">
+<path fill="#F4F4F4" fill-opacity="1" stroke="#262626"
+stroke-opacity="1" stroke-width="2" stroke-dasharray="none"
+stroke-linejoin="round" stroke-linecap="butt" stroke-dashoffset=""
+fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end=""
+d="M259.29133796691895,89.83464622497559 C259.29133796691895,73.81254677746178
+274.9543213923333,60.834646224975586 294.29133796691895,60.834646224975586
+C313.62835454150456,60.834646224975586 329.29133796691895,73.81254677746178
+329.29133796691895,89.83464622497559 C329.29133796691895,105.8567456724894
+313.62835454150456,118.83464622497559 294.29133796691895,118.83464622497559
+C274.9543213923333,118.83464622497559 259.29133796691895,105.8567456724894
+259.29133796691895,89.83464622497559 z" id="head_" class=""/>
+</g>
+</g></svg>
