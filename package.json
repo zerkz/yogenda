@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json",
-    "ms-dev": "meteor --settings settings-development-with-microsoft.json",
-    "ms-debug": "meteor debug --settings settings-development-with-microsoft.json",
+    "prod" : "ROOT_URL=https://yogenda.com/ meteor --setings settings-production.json",
+    "ms-dev": "ROOT_URL=http://dev.yogenda.com/ meteor --settings settings-development-with-microsoft.json",
+    "ms-debug" : "ROOT_URL=http://dev.yogenda.com/ meteor debug --settings settings-development-with-microsoft.json",
     "test": "jest"
   },
   "dependencies": {
