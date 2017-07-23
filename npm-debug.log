@@ -1,0 +1,301 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\ProgramData\\chocolatey\\lib\\npm\\tools\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.9
+3 info using node@v8.2.0
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ 'C:\\dev\\yogenda\\yogenda',
+5 verbose install   [ '@cleverbeagle/dates',
+5 verbose install     '@cleverbeagle/seeder',
+5 verbose install     '@cleverbeagle/strings',
+5 verbose install     'babel-runtime',
+5 verbose install     'bcrypt',
+5 verbose install     'commonmark',
+5 verbose install     'jquery',
+5 verbose install     'jquery-validation',
+5 verbose install     'meteor-node-stubs',
+5 verbose install     'prop-types',
+5 verbose install     'react',
+5 verbose install     'react-addons-pure-render-mixin',
+5 verbose install     'react-bootstrap',
+5 verbose install     'react-dom',
+5 verbose install     'react-router-bootstrap',
+5 verbose install     'react-router-dom',
+5 verbose install     'simpl-schema',
+5 verbose install     'http',
+5 verbose install     'babel-jest',
+5 verbose install     'babel-preset-es2015',
+5 verbose install     'babel-preset-react',
+5 verbose install     'enzyme',
+5 verbose install     'eslint',
+5 verbose install     'eslint-config-airbnb',
+5 verbose install     'eslint-plugin-import',
+5 verbose install     'eslint-plugin-jsx-a11y',
+5 verbose install     'eslint-plugin-meteor',
+5 verbose install     'eslint-plugin-react',
+5 verbose install     'jest' ] ]
+6 info preinstall yogenda@
+7 warn package.json bcrypt-pbkdf@1.0.1 No repository field.
+8 warn package.json http@0.0.0 http is also the name of a node core module.
+9 warn package.json http@0.0.0 No description
+10 warn package.json http@0.0.0 No repository field.
+11 warn package.json jest-config@20.0.4 No description
+12 warn package.json jest-diff@20.0.3 No description
+13 warn package.json jest-docblock@20.0.3 No description
+14 warn package.json jest-environment-jsdom@20.0.3 No description
+15 warn package.json jest-environment-node@20.0.3 No description
+16 warn package.json jest-haste-map@20.0.4 No description
+17 warn package.json jest-jasmine2@20.0.4 No description
+18 warn package.json jest-matchers@20.0.3 No description
+19 warn package.json jest-message-util@20.0.3 No description
+20 warn package.json jest-regex-util@20.0.3 No description
+21 warn package.json jest-resolve@20.0.4 No description
+22 warn package.json jest-resolve-dependencies@20.0.3 No description
+23 warn package.json jest-runtime@20.0.4 No description
+24 warn package.json jest-snapshot@20.0.3 No description
+25 warn package.json jest-util@20.0.3 No description
+26 warn package.json mongo-object@0.0.1 No repository field.
+27 warn package.json punycode@1.4.1 punycode is also the name of a node core module.
+28 warn package.json string_decoder@1.0.3 string_decoder is also the name of a node core module.
+29 verbose readDependencies using package.json deps
+30 verbose already installed skipping eslint-plugin-meteor@^4.0.1 C:\dev\yogenda\yogenda
+31 verbose already installed skipping eslint-plugin-react@^7.0.1 C:\dev\yogenda\yogenda
+32 verbose already installed skipping jest@^20.0.3 C:\dev\yogenda\yogenda
+33 verbose cache add [ '@cleverbeagle/dates@^0.4.0', null ]
+34 verbose cache add name=undefined spec="@cleverbeagle/dates@^0.4.0" args=["@cleverbeagle/dates@^0.4.0",null]
+35 verbose parsed url Url {
+35 verbose parsed url   protocol: null,
+35 verbose parsed url   slashes: null,
+35 verbose parsed url   auth: null,
+35 verbose parsed url   host: null,
+35 verbose parsed url   port: null,
+35 verbose parsed url   hostname: null,
+35 verbose parsed url   hash: null,
+35 verbose parsed url   search: null,
+35 verbose parsed url   query: null,
+35 verbose parsed url   pathname: '@cleverbeagle/dates@%5E0.4.0',
+35 verbose parsed url   path: '@cleverbeagle/dates@%5E0.4.0',
+35 verbose parsed url   href: '@cleverbeagle/dates@%5E0.4.0' }
+36 verbose cache add [ '@cleverbeagle/seeder@^1.1.0', null ]
+37 verbose cache add name=undefined spec="@cleverbeagle/seeder@^1.1.0" args=["@cleverbeagle/seeder@^1.1.0",null]
+38 verbose parsed url Url {
+38 verbose parsed url   protocol: null,
+38 verbose parsed url   slashes: null,
+38 verbose parsed url   auth: null,
+38 verbose parsed url   host: null,
+38 verbose parsed url   port: null,
+38 verbose parsed url   hostname: null,
+38 verbose parsed url   hash: null,
+38 verbose parsed url   search: null,
+38 verbose parsed url   query: null,
+38 verbose parsed url   pathname: '@cleverbeagle/seeder@%5E1.1.0',
+38 verbose parsed url   path: '@cleverbeagle/seeder@%5E1.1.0',
+38 verbose parsed url   href: '@cleverbeagle/seeder@%5E1.1.0' }
+39 verbose cache add name="" spec="cleverbeagle/dates@^0.4.0" args=["","cleverbeagle/dates@^0.4.0"]
+40 verbose parsed url Url {
+40 verbose parsed url   protocol: null,
+40 verbose parsed url   slashes: null,
+40 verbose parsed url   auth: null,
+40 verbose parsed url   host: null,
+40 verbose parsed url   port: null,
+40 verbose parsed url   hostname: null,
+40 verbose parsed url   hash: null,
+40 verbose parsed url   search: null,
+40 verbose parsed url   query: null,
+40 verbose parsed url   pathname: 'cleverbeagle/dates@%5E0.4.0',
+40 verbose parsed url   path: 'cleverbeagle/dates@%5E0.4.0',
+40 verbose parsed url   href: 'cleverbeagle/dates@%5E0.4.0' }
+41 verbose cache add name="" spec="cleverbeagle/seeder@^1.1.0" args=["","cleverbeagle/seeder@^1.1.0"]
+42 verbose parsed url Url {
+42 verbose parsed url   protocol: null,
+42 verbose parsed url   slashes: null,
+42 verbose parsed url   auth: null,
+42 verbose parsed url   host: null,
+42 verbose parsed url   port: null,
+42 verbose parsed url   hostname: null,
+42 verbose parsed url   hash: null,
+42 verbose parsed url   search: null,
+42 verbose parsed url   query: null,
+42 verbose parsed url   pathname: 'cleverbeagle/seeder@%5E1.1.0',
+42 verbose parsed url   path: 'cleverbeagle/seeder@%5E1.1.0',
+42 verbose parsed url   href: 'cleverbeagle/seeder@%5E1.1.0' }
+43 verbose cache add name="cleverbeagle/dates" spec="^0.4.0" args=["cleverbeagle/dates","^0.4.0"]
+44 verbose parsed url Url {
+44 verbose parsed url   protocol: null,
+44 verbose parsed url   slashes: null,
+44 verbose parsed url   auth: null,
+44 verbose parsed url   host: null,
+44 verbose parsed url   port: null,
+44 verbose parsed url   hostname: null,
+44 verbose parsed url   hash: null,
+44 verbose parsed url   search: null,
+44 verbose parsed url   query: null,
+44 verbose parsed url   pathname: '%5E0.4.0',
+44 verbose parsed url   path: '%5E0.4.0',
+44 verbose parsed url   href: '%5E0.4.0' }
+45 verbose addNamed [ 'cleverbeagle/dates', '^0.4.0' ]
+46 verbose addNamed [ null, '>=0.4.0-0 <0.5.0-0' ]
+47 verbose cache add name="cleverbeagle/seeder" spec="^1.1.0" args=["cleverbeagle/seeder","^1.1.0"]
+48 verbose parsed url Url {
+48 verbose parsed url   protocol: null,
+48 verbose parsed url   slashes: null,
+48 verbose parsed url   auth: null,
+48 verbose parsed url   host: null,
+48 verbose parsed url   port: null,
+48 verbose parsed url   hostname: null,
+48 verbose parsed url   hash: null,
+48 verbose parsed url   search: null,
+48 verbose parsed url   query: null,
+48 verbose parsed url   pathname: '%5E1.1.0',
+48 verbose parsed url   path: '%5E1.1.0',
+48 verbose parsed url   href: '%5E1.1.0' }
+49 verbose addNamed [ 'cleverbeagle/seeder', '^1.1.0' ]
+50 verbose addNamed [ null, '>=1.1.0-0 <2.0.0-0' ]
+51 silly lockFile 902b0e06-cleverbeagle-dates-0-4-0 cleverbeagle/dates@^0.4.0
+52 verbose lock cleverbeagle/dates@^0.4.0 C:\Users\Kyle\AppData\Roaming\npm-cache\902b0e06-cleverbeagle-dates-0-4-0.lock
+53 silly lockFile 324d5c0c-cleverbeagle-seeder-1-1-0 cleverbeagle/seeder@^1.1.0
+54 verbose lock cleverbeagle/seeder@^1.1.0 C:\Users\Kyle\AppData\Roaming\npm-cache\324d5c0c-cleverbeagle-seeder-1-1-0.lock
+55 silly addNameRange { name: 'cleverbeagle/dates',
+55 silly addNameRange   range: '>=0.4.0-0 <0.5.0-0',
+55 silly addNameRange   hasData: false }
+56 silly addNameRange { name: 'cleverbeagle/seeder',
+56 silly addNameRange   range: '>=1.1.0-0 <2.0.0-0',
+56 silly addNameRange   hasData: false }
+57 verbose url raw cleverbeagle/dates
+58 verbose url resolving [ 'https://registry.npmjs.org/', './cleverbeagle/dates' ]
+59 verbose url resolved https://registry.npmjs.org/cleverbeagle/dates
+60 info trying registry request attempt 1 at 16:22:10
+61 http GET https://registry.npmjs.org/cleverbeagle/dates
+62 verbose url raw cleverbeagle/seeder
+63 verbose url resolving [ 'https://registry.npmjs.org/', './cleverbeagle/seeder' ]
+64 verbose url resolved https://registry.npmjs.org/cleverbeagle/seeder
+65 info trying registry request attempt 1 at 16:22:10
+66 http GET https://registry.npmjs.org/cleverbeagle/seeder
+67 verbose cache add [ '@cleverbeagle/strings@^0.1.0', null ]
+68 verbose cache add name=undefined spec="@cleverbeagle/strings@^0.1.0" args=["@cleverbeagle/strings@^0.1.0",null]
+69 verbose parsed url Url {
+69 verbose parsed url   protocol: null,
+69 verbose parsed url   slashes: null,
+69 verbose parsed url   auth: null,
+69 verbose parsed url   host: null,
+69 verbose parsed url   port: null,
+69 verbose parsed url   hostname: null,
+69 verbose parsed url   hash: null,
+69 verbose parsed url   search: null,
+69 verbose parsed url   query: null,
+69 verbose parsed url   pathname: '@cleverbeagle/strings@%5E0.1.0',
+69 verbose parsed url   path: '@cleverbeagle/strings@%5E0.1.0',
+69 verbose parsed url   href: '@cleverbeagle/strings@%5E0.1.0' }
+70 verbose already installed skipping babel-runtime@^6.20.0 C:\dev\yogenda\yogenda
+71 verbose already installed skipping bcrypt@^1.0.2 C:\dev\yogenda\yogenda
+72 verbose already installed skipping commonmark@^0.27.0 C:\dev\yogenda\yogenda
+73 verbose already installed skipping jquery@^2.2.4 C:\dev\yogenda\yogenda
+74 verbose already installed skipping jquery-validation@^1.16.0 C:\dev\yogenda\yogenda
+75 verbose already installed skipping meteor-node-stubs@~0.2.4 C:\dev\yogenda\yogenda
+76 verbose already installed skipping prop-types@^15.5.10 C:\dev\yogenda\yogenda
+77 verbose already installed skipping react@^15.5.4 C:\dev\yogenda\yogenda
+78 verbose already installed skipping react-addons-pure-render-mixin@^15.5.2 C:\dev\yogenda\yogenda
+79 verbose already installed skipping react-bootstrap@^0.31.0 C:\dev\yogenda\yogenda
+80 verbose already installed skipping react-dom@^15.5.4 C:\dev\yogenda\yogenda
+81 verbose already installed skipping react-router-bootstrap@^0.24.2 C:\dev\yogenda\yogenda
+82 verbose already installed skipping react-router-dom@^4.1.1 C:\dev\yogenda\yogenda
+83 verbose already installed skipping simpl-schema@^0.3.0 C:\dev\yogenda\yogenda
+84 verbose cache add name="" spec="cleverbeagle/strings@^0.1.0" args=["","cleverbeagle/strings@^0.1.0"]
+85 verbose parsed url Url {
+85 verbose parsed url   protocol: null,
+85 verbose parsed url   slashes: null,
+85 verbose parsed url   auth: null,
+85 verbose parsed url   host: null,
+85 verbose parsed url   port: null,
+85 verbose parsed url   hostname: null,
+85 verbose parsed url   hash: null,
+85 verbose parsed url   search: null,
+85 verbose parsed url   query: null,
+85 verbose parsed url   pathname: 'cleverbeagle/strings@%5E0.1.0',
+85 verbose parsed url   path: 'cleverbeagle/strings@%5E0.1.0',
+85 verbose parsed url   href: 'cleverbeagle/strings@%5E0.1.0' }
+86 verbose cache add name="cleverbeagle/strings" spec="^0.1.0" args=["cleverbeagle/strings","^0.1.0"]
+87 verbose parsed url Url {
+87 verbose parsed url   protocol: null,
+87 verbose parsed url   slashes: null,
+87 verbose parsed url   auth: null,
+87 verbose parsed url   host: null,
+87 verbose parsed url   port: null,
+87 verbose parsed url   hostname: null,
+87 verbose parsed url   hash: null,
+87 verbose parsed url   search: null,
+87 verbose parsed url   query: null,
+87 verbose parsed url   pathname: '%5E0.1.0',
+87 verbose parsed url   path: '%5E0.1.0',
+87 verbose parsed url   href: '%5E0.1.0' }
+88 verbose addNamed [ 'cleverbeagle/strings', '^0.1.0' ]
+89 verbose addNamed [ null, '>=0.1.0-0 <0.2.0-0' ]
+90 silly lockFile 4738e3f4-cleverbeagle-strings-0-1-0 cleverbeagle/strings@^0.1.0
+91 verbose lock cleverbeagle/strings@^0.1.0 C:\Users\Kyle\AppData\Roaming\npm-cache\4738e3f4-cleverbeagle-strings-0-1-0.lock
+92 verbose already installed skipping http@* C:\dev\yogenda\yogenda
+93 silly addNameRange { name: 'cleverbeagle/strings',
+93 silly addNameRange   range: '>=0.1.0-0 <0.2.0-0',
+93 silly addNameRange   hasData: false }
+94 verbose already installed skipping babel-jest@^20.0.3 C:\dev\yogenda\yogenda
+95 verbose url raw cleverbeagle/strings
+96 verbose url resolving [ 'https://registry.npmjs.org/', './cleverbeagle/strings' ]
+97 verbose url resolved https://registry.npmjs.org/cleverbeagle/strings
+98 info trying registry request attempt 1 at 16:22:10
+99 http GET https://registry.npmjs.org/cleverbeagle/strings
+100 verbose already installed skipping babel-preset-es2015@^6.24.1 C:\dev\yogenda\yogenda
+101 verbose already installed skipping babel-preset-react@^6.24.1 C:\dev\yogenda\yogenda
+102 verbose already installed skipping enzyme@^2.8.2 C:\dev\yogenda\yogenda
+103 verbose already installed skipping eslint@^3.19.0 C:\dev\yogenda\yogenda
+104 verbose already installed skipping eslint-config-airbnb@^15.0.1 C:\dev\yogenda\yogenda
+105 verbose already installed skipping eslint-plugin-import@^2.2.0 C:\dev\yogenda\yogenda
+106 verbose already installed skipping eslint-plugin-jsx-a11y@^5.0.3 C:\dev\yogenda\yogenda
+107 http 404 https://registry.npmjs.org/cleverbeagle/seeder
+108 silly registry.get cb [ 404,
+108 silly registry.get   { 'content-type': 'application/json',
+108 silly registry.get     'cache-control': 'max-age=0',
+108 silly registry.get     'content-length': '2',
+108 silly registry.get     'accept-ranges': 'bytes',
+108 silly registry.get     date: 'Sat, 22 Jul 2017 21:22:10 GMT',
+108 silly registry.get     via: '1.1 varnish',
+108 silly registry.get     age: '0',
+108 silly registry.get     connection: 'close',
+108 silly registry.get     'x-served-by': 'cache-dfw1836-DFW',
+108 silly registry.get     'x-cache': 'MISS',
+108 silly registry.get     'x-cache-hits': '0',
+108 silly registry.get     'x-timer': 'S1500758530.233667,VS0,VE184',
+108 silly registry.get     vary: 'Accept-Encoding' } ]
+109 http 404 https://registry.npmjs.org/cleverbeagle/dates
+110 silly registry.get cb [ 404,
+110 silly registry.get   { 'content-type': 'application/json',
+110 silly registry.get     'cache-control': 'max-age=0',
+110 silly registry.get     'content-length': '2',
+110 silly registry.get     'accept-ranges': 'bytes',
+110 silly registry.get     date: 'Sat, 22 Jul 2017 21:22:10 GMT',
+110 silly registry.get     via: '1.1 varnish',
+110 silly registry.get     age: '0',
+110 silly registry.get     connection: 'close',
+110 silly registry.get     'x-served-by': 'cache-dfw1847-DFW',
+110 silly registry.get     'x-cache': 'MISS',
+110 silly registry.get     'x-cache-hits': '0',
+110 silly registry.get     'x-timer': 'S1500758530.239461,VS0,VE183',
+110 silly registry.get     vary: 'Accept-Encoding' } ]
+111 silly lockFile 324d5c0c-cleverbeagle-seeder-1-1-0 cleverbeagle/seeder@^1.1.0
+112 silly lockFile 324d5c0c-cleverbeagle-seeder-1-1-0 cleverbeagle/seeder@^1.1.0
+113 silly lockFile 902b0e06-cleverbeagle-dates-0-4-0 cleverbeagle/dates@^0.4.0
+114 silly lockFile 902b0e06-cleverbeagle-dates-0-4-0 cleverbeagle/dates@^0.4.0
+115 error 404 Not Found
+115 error 404
+115 error 404 'cleverbeagle/seeder' is not in the npm registry.
+115 error 404 You should bug the author to publish it
+115 error 404 It was specified as a dependency of 'yogenda'
+115 error 404
+115 error 404 Note that you can also install from a
+115 error 404 tarball, folder, or http url, or git url.
+116 error System Windows_NT 10.0.14393
+117 error command "C:\\Program Files\\nodejs\\node.exe" "C:\\ProgramData\\chocolatey\\lib\\npm\\tools\\node_modules\\npm\\bin\\npm-cli.js" "install"
+118 error cwd C:\dev\yogenda\yogenda
+119 error node -v v8.2.0
+120 error npm -v 1.4.9
+121 error code E404
+122 verbose exit [ 1, true ]
