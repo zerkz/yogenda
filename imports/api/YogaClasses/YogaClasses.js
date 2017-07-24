@@ -36,14 +36,35 @@ YogaClasses.schema = new SimpleSchema({
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
+  location: {
+    type: String,
+    label: "Location of the Yoga Class.",
+    optional: true
+  },
   title: {
     type: String,
-    label: 'The title of the yogaClass.',
+    label: 'The title of the Yoga class.',
   },
-  body: {
+  description: {
     type: String,
-    label: 'The body of the yogaClass.',
+    label: 'The description of the Yoga class.',
   },
+  duration : {
+    type : Number,
+    label: "The duration of the Yoga class in minutes.",
+    min: 0
+  },
+  spotifyURL : {
+    type : String,
+    label : "The spotify playlist URL of the class.",
+    regEx : "https:\/\/open.spotify.com\/user\/.+\/\w+",
+    optional: true
+  },
+  maxAttendees : {
+    type : Number,
+    label : "the max amount of attendees that can attend the class.",
+    min: 1
+  }
 });
 
 YogaClasses.attachSchema(YogaClasses.schema);

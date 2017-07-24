@@ -2,10 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import YogaClassEditor from '../../components/YogaClassEditor/YogaClassEditor';
 
+// Choose your theme
+import AutoForm from 'uniforms-bootstrap3/AutoForm';
+
+// A compatible schema
+import YogaClasses from '../../../api/YogaClasses/YogaClasses';
+
+
 const NewYogaClass = ({ history }) => (
   <div className="NewYogaClass">
     <h4 className="page-header">New YogaClass</h4>
-    <YogaClassEditor history={history} />
+    <AutoForm schema={YogaClasses.schema} onSubmit={doc => console.log(doc)}/>
   </div>
 );
 
