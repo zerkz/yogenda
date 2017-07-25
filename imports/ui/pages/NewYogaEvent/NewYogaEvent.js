@@ -8,7 +8,7 @@ import YogaEvents from '../../../api/YogaEvents/YogaEvents';
 
 const NewYogaEvent = ({ history }) => (
   <div className="NewYogaEvent">
-    <h4 className="page-header">New YogaEvent</h4>
+    <h4 className="page-header">New Yoga Event</h4>
     <AutoForm schema={YogaEvents.schema} onSubmit={doc => console.log(doc)}/>
   </div>
 );

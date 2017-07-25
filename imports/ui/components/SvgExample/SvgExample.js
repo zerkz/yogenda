@@ -50,7 +50,7 @@ function offHover(bodyParts, id) {
 }
 
 
-export default SvgExample = () => {
+export default SvgExample = (props) => {
   let bodyParts = {};
   const s = Snap('24in', '24in');
   Snap.load('/mr_yoga.svg', (loadedFragment) => {

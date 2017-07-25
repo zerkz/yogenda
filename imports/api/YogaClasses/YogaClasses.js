@@ -2,6 +2,7 @@
 
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
+import uniforms from 'uniforms';
 
 const YogaClasses = new Mongo.Collection('YogaClasses');
 
@@ -21,6 +22,7 @@ YogaClasses.schema = new SimpleSchema({
   owner: {
     type: String,
     label: 'The ID of the user this yogaClass belongs to.',
+    uniforms: () => null
   },
   createdAt: {
     type: String,
@@ -28,6 +30,7 @@ YogaClasses.schema = new SimpleSchema({
     autoValue() {
       if (this.isInsert) return (new Date()).toISOString();
     },
+    uniforms: () => null
   },
   updatedAt: {
     type: String,
@@ -35,35 +38,36 @@ YogaClasses.schema = new SimpleSchema({
     autoValue() {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
-  },
-  location: {
-    type: String,
-    label: "Location of the Yoga Class.",
-    optional: true
+    uniforms: () => null
   },
   title: {
     type: String,
-    label: 'The title of the Yoga class.',
+    label: 'Title',
   },
   description: {
     type: String,
-    label: 'The description of the Yoga class.',
+    label: 'Description',
   },
-  duration : {
+  durationInMinutes : {
     type : Number,
-    label: "The duration of the Yoga class in minutes.",
+    label: "The duration (minutes)",
     min: 0
-  },
-  spotifyURL : {
-    type : String,
-    label : "The spotify playlist URL of the class.",
-    regEx : "https:\/\/open.spotify.com\/user\/.+\/\w+",
-    optional: true
   },
   maxAttendees : {
     type : Number,
-    label : "the max amount of attendees that can attend the class.",
+    label : "Max number of Yogis",
     min: 1
+  },
+  location: {
+    type: String,
+    label: "Location (optional)",
+    optional: true
+  },
+  spotifyURL : {
+    type : String,
+    label : "Spotify Playlist URL (optional)",
+    regEx : "https:\/\/open.spotify.com\/user\/.+\/\w+",
+    optional: true
   }
 });
 

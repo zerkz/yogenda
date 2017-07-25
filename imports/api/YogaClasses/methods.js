@@ -5,11 +5,7 @@ import rateLimit from '../../modules/rate-limit';
 
 Meteor.methods({
   'yogaClasses.insert': function yogaClassesInsert(yogaClass) {
-    check(yogaClass, {
-      title: String,
-      body: String,
-    });
-
+    check(yogaClass);
     try {
       return YogaClasses.insert({ owner: this.userId, ...yogaClass });
     } catch (exception) {
