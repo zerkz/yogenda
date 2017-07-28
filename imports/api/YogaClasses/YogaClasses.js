@@ -2,7 +2,6 @@
 
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
-import uniforms from 'uniforms';
 
 const YogaClasses = new Mongo.Collection('YogaClasses');
 
@@ -19,30 +18,27 @@ YogaClasses.deny({
 });
 
 YogaClasses.schema = new SimpleSchema({
+  title: {
+    type: String,
+    label: 'Title',
+  },
   owner: {
     type: String,
-    label: 'The ID of the user this yogaClass belongs to.',
-    uniforms: () => null
+    label: 'The ID of the user this yogaClass belongs to.'
   },
   createdAt: {
     type: String,
     label: 'The date this yogaClass was created.',
     autoValue() {
       if (this.isInsert) return (new Date()).toISOString();
-    },
-    uniforms: () => null
+    }
   },
   updatedAt: {
     type: String,
     label: 'The date this yogaClass was last updated.',
     autoValue() {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
-    },
-    uniforms: () => null
-  },
-  title: {
-    type: String,
-    label: 'Title',
+    }
   },
   description: {
     type: String,

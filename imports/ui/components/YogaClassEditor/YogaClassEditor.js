@@ -5,17 +5,20 @@ import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import validate from '../../../modules/validate';
 // Choose your theme
 import AutoForm from 'uniforms-bootstrap3/AutoForm';
 // A compatible schema
 import YogaClasses from '../../../api/YogaClasses/YogaClasses';
 
+const YogaClassesUISchema = YogaClasses.simpleSchema().omit('owner', 'createdAt', 'updatedAt');
+
+
 class YogaClassEditor extends React.Component {
+
 
   handleSubmit(doc) {
     const { history } = this.props;
-    const existingYogaClass = doc && doc._id;
+    const existingYogaClass = this.props.doc && this.props.doc._id;
     const methodToCall = existingYogaClass ? 'yogaClasses.update' : 'yogaClasses.insert';
 
     if (existingYogaClass) doc._id = existingYogaClass;
@@ -34,12 +37,12 @@ class YogaClassEditor extends React.Component {
 
   render() {
     const { doc } = this.props;
-    return (<AutoForm schema={YogaClasses.schema} onSubmit={this.handleSubmit} model={doc} />);
+    return (<AutoForm schema={YogaClassesUISchema} onSubmit={this.handleSubmit.bind(this)} model={doc} />);
   }
 }
 
 YogaClassEditor.defaultProps = {
-  doc: { title: '', body: '' },
+  doc: { title: '' },
 };
 
 YogaClassEditor.propTypes = {
