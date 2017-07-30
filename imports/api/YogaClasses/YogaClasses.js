@@ -34,7 +34,7 @@ YogaClasses.schema = new SimpleSchema({
     }
   },
   updatedAt: {
-    type: String,
+    type: String, 
     label: 'The date this yogaClass was last updated.',
     autoValue() {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();

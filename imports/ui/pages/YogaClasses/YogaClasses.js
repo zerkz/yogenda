@@ -77,6 +77,6 @@ export default createContainer(() => {
   const subscription = Meteor.subscribe('yogaClasses');
   return {
     loading: !subscription.ready(),
-    YogaClasses: YogaClassesCollection.find().fetch(),
+    YogaClasses: YogaClassesCollection.find({owner : Meteor.userId()}).fetch(),
   };
 }, YogaClasses);

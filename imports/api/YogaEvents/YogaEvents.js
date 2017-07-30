@@ -4,9 +4,10 @@ import { Mongo } from 'meteor/mongo';
 import YogaClasses from '../YogaClasses/YogaClasses';
 import SimpleSchema from 'simpl-schema';
 import uniforms from 'uniforms';
+import _ from 'lodash';
 
 const YogaEvents = new Mongo.Collection('YogaEvents');
-const YogaClassesSchema = YogaClasses.schema;
+const YogaClassesSchema = _.clone(YogaClasses.simpleSchema()._schema);
 
 YogaEvents.allow({
   insert: () => false,
@@ -41,43 +42,40 @@ const AttendeeSchema = new SimpleSchema({
 });
 
 //extend schema object with overridable Yoga Class schema.
-let eventsSchema = Object.assign({
+let eventsSchema = _.assign(YogaClassesSchema, {
   owner: {
     type: String,
     label: 'The ID of the user this Yoga Event belongs to.',
-    uniforms: () => null
   },
   createdAt: {
     type: String,
     label: 'The date this Yoga Event was created.',
     autoValue() {
       if (this.isInsert) return (new Date()).toISOString();
-    },
-    uniforms: () => null
+    }
   },
   attendees: {
     type: Array,
     "label" : "List of attendees",
-    uniforms: () => null
   },
   "attendees.$": {
     type: AttendeeSchema,
-    "label" : "List of attendees",
-    uniforms: () => null
+    "label" : "List of attendees"
   },
   updatedAt: {
     type: String,
     label: 'The date this Yoga Event was last updated.',
     autoValue() {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
-    },
-    uniforms: () => null
+    }
   },
   additionalInformation : {
     type: String,
     label : "Additional information about the yoga event."
   }
-}, YogaClassesSchema._schema);
+});
+
+console.log(eventsSchema);
 
 YogaEvents.schema = new SimpleSchema(eventsSchema);
 
