@@ -14,7 +14,7 @@ const Navigation = (props) => {
 
   let nav = <PublicNavigation />;
   if (props.authenticated) {
-     nav = props ? <AdminNavigation {...props}/> : <AuthenticatedNavigation {...props} />;
+     nav = props.roles.includes('admin') ? <AdminNavigation {...props}/> : <AuthenticatedNavigation {...props} />;
   }
   return <Navbar>
     <Navbar.Header>

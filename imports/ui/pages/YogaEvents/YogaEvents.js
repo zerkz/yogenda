@@ -23,12 +23,15 @@ const handleRemove = (eventId) => {
   }
 };
 
-const YogaEvents = ({ loading, yogaEvents, match, history }) => (!loading ? (
+const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading ? (
   <div className="YogaEvents">
-    <div className="page-header clearfix">
+    { roles.includes('admin') && 
+      <div className="page-header clearfix">
       <h4 className="pull-left">Yoga Events</h4>
       <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add YogaEvent</Link>
-    </div>
+      </div>
+    }
+    
     {yogaEvents.length ? <Table responsive>
       <thead>
         <tr>
@@ -71,6 +74,7 @@ YogaEvents.propTypes = {
   yogaEvents: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  roles : PropTypes.array.isRequired
 };
 
 export default createContainer(() => {
