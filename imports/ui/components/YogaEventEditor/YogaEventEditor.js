@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormControl, FormGroup, Panel } from 'react-bootstrap';
+import DateTime from 'react-datetime';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import _ from 'lodash'
@@ -12,7 +13,7 @@ import AutoForm from 'uniforms-bootstrap3/AutoForm';
 import YogaEvents from '../../../api/YogaEvents/YogaEvents';
 
 
-const eventOmitFields = ['_id','owner', 'createdAt', 'updatedAt'];
+const eventOmitFields = ['_id','owner', 'createdAt', 'updatedAt', 'attendees'];
 const YogaEventsSchema = YogaEvents.simpleSchema().omit(...eventOmitFields);
 
 class YogaEventEditor extends React.Component {

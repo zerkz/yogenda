@@ -57,6 +57,11 @@ let eventsSchema = _.assign(YogaClassesSchema, {
   attendees: {
     type: Array,
     "label" : "List of attendees",
+    autoValue: function() {
+      if (this.isInsert) {
+        return [];
+      }
+    }
   },
   "attendees.$": {
     type: AttendeeSchema,
@@ -69,13 +74,16 @@ let eventsSchema = _.assign(YogaClassesSchema, {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     }
   },
+  startsAt: {
+    type: Date,
+    label: 'The date this Yoga Event starts',
+  },
   additionalInformation : {
     type: String,
-    label : "Additional information about the yoga event."
+    label : "Additional information about the yoga event.",
+    optional : true
   }
 });
-
-console.log(eventsSchema);
 
 YogaEvents.schema = new SimpleSchema(eventsSchema);
 

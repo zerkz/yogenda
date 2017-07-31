@@ -58,7 +58,9 @@ export const updateYogaClass = new ValidatedMethod({
 
 export const removeYogaClass = new ValidatedMethod({
   name: 'yogaClasses.remove',
-  validate: schema.validator(),
+  validate(id) {
+    check(id, String);
+  },
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,

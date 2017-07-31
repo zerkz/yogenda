@@ -17,7 +17,7 @@ const handleRemove = (classId) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('YogaClass deleted!', 'success');
+        Bert.alert('Yoga Class deleted!', 'success');
       }
     });
   }

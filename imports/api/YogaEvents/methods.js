@@ -19,12 +19,12 @@ const mustBeLoggedIn = {
 };
 
 
-const schema = YogaEvents.simpleSchema().omit('owner', 'createdAt', 'updatedAt');
+const schema = YogaEvents.simpleSchema();;
 
 
 export const insertYogaEvent = new ValidatedMethod({
   name: 'yogaEvents.insert',
-  validate: schema.validator(),
+  validate: schema.omit('owner', 'createdAt', 'updatedAt', 'attendees').validator(),
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,
@@ -56,11 +56,13 @@ export const updateYogaEvent = new ValidatedMethod({
 
 export const removeYogaEvent = new ValidatedMethod({
   name: 'yogaEvents.remove',
-  validate: schema.validator(),
+  validate(id) {
+    check(id, String);
+  },
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,
-  run(yogaEvent) {
+  run(yogaEventId) {
     try {
       return YogaEvents.remove(yogaEventId);
     } catch (exception) {
