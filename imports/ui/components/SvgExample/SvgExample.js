@@ -1,4 +1,6 @@
 import React from 'react';
+import { Alert } from 'react-bootstrap';
+import { Bert } from 'meteor/themeteorchef:bert';
 
 const renderSVG = svg => (
   <div> {svg} </div>
@@ -38,7 +40,8 @@ function onClick(bodyParts, id) {
   if (id.includes('calf')) partClicked = 'calves';
   if (id.includes('tricep')) partClicked = 'triceps';
 
-  return (() => console.log('Bodypart clicked: ' + partClicked));
+  //return (() => console.log('Bodypart clicked: ' + partClicked));
+  return (() => Bert.alert(`${partClicked}`, 'success'));
 }
 
 function onHover(bodyParts, id) {
