@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json",
-    "prod": "ROOT_URL=https://yogenda.com/ meteor --settings settings-production.json",
+    "prod-nohup": "ROOT_URL=https://yogenda.com/ nohup meteor --production --settings settings-production.json",
+    "prod": "ROOT_URL=https://yogenda.com/ meteor --production --settings settings-production.json",
     "ms-dev": "ROOT_URL=http://localhost:3000/ meteor --settings settings-development-with-microsoft.json",
     "ms-debug": "ROOT_URL=http://localhost:3000/ meteor debug --settings settings-development-with-microsoft.json",
     "test": "jest"

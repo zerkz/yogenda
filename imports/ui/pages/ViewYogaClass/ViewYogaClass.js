@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button,
+        Grid, Row, Col } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -21,30 +22,58 @@ const handleRemove = (classId, history) => {
   }
 };
 
-const renderYogaClass = (yogaClass, match, history) => (yogaClass ? (
+const renderYogaClass = (doc, match, history) => (doc ? (
   <div className="ViewYogaClass">
     <div className="page-header clearfix">
-      <h4 className="pull-left">{ yogaClass && yogaClass.title }</h4>
+      <h4 className="pull-left">{ doc && doc.title }</h4>
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">
           <Button bsStyle="success" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
-          <Button bsStyle="success" onClick={() => handleRemove(yogaClass._id, history)}>
+          <Button bsStyle="success" onClick={() => handleRemove(doc._id, history)}>
             Delete
           </Button>
         </ButtonGroup>
       </ButtonToolbar>
     </div>
-    { yogaClass && yogaClass.body }
+    <Grid className="yoga-info-grid">
+      <Row>
+        <Col xs={12} md={12} lg={12}>
+          <span className='event-attr'>Description:</span>
+          {doc.description}
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} md={6} lg={4}>
+          <span className='event-attr'>Max Attendees:</span>
+          {doc.maxAttendees}
+        </Col>
+        <Col xs={12} md={6} lg={4}>
+          <span className='event-attr'>Location:</span>
+          {doc.location}
+        </Col>
+        <Col xs={12} md={6} lg={4}>
+          <span className='event-attr'>Duration (Minutes):</span>
+          {doc.durationInMinutes}
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} md={12} lg={12}>
+          <span className='event-attr'>Spotify Playlist:</span>
+          {doc.spotifyURL && 
+            <a href={doc.spotifyURL}>{doc.spotifyURL}</a>}
+        </Col>
+      </Row>
+    </Grid>
   </div>
 ) : <NotFound />);
 
-const ViewYogaClass = ({ loading, yogaClass, match, history }) => (
-  !loading ? renderYogaClass(yogaClass, match, history) : <Loading />
+const ViewYogaClass = ({ loading, doc, match, history }) => (
+  !loading ? renderYogaClass(doc, match, history) : <Loading />
 );
 
 ViewYogaClass.propTypes = {
   loading: PropTypes.bool.isRequired,
-  yogaClass: PropTypes.object.isRequired,
+  doc: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
@@ -55,6 +84,6 @@ export default createContainer(({ match }) => {
 
   return {
     loading: !subscription.ready(),
-    yogaClass: YogaClasses.findOne(classId) || {},
+    doc: YogaClasses.findOne(classId) || {},
   };
 }, ViewYogaClass);

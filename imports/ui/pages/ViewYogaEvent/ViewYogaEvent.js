@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonToolbar, ButtonGroup, Button, 
-  Grid, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
+  Grid, Row, Col } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -63,7 +63,7 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
       </ButtonToolbar>
       }
     </div>
-    <Grid className="yoga-event-grid">
+    <Grid className="yoga-info-grid">
       <Row>
         <Col xs={12} md={6} lg={4}>
           <span className='event-attr'>Instructor:</span>
@@ -110,10 +110,10 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
             doc.attendees.map((attendee, i) => {
               return <Col key={i} xs={12} md={6} lg={4}>{attendee.name}</Col>
             })
-          : <Col xs={12} md={12} lg={12}>No Signups Yet!</Col>}
+          : <Col xs={12} md={12} lg={12} className="text-center"><h3>No Signups Yet!</h3></Col>}
       </Row>
       <Row>
-         <Col xs={12} md={12} lg={12}>
+         <Col xs={12} md={12} lg={12} className="text-center">
             { 
               //man this is dirty. needs refactor bad.
               doc.attendees.length >= doc.maxAttendees ? 

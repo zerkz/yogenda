@@ -62,7 +62,7 @@ const YogaClasses = ({ loading, YogaClasses, match, history }) => (!loading ? (
           </tr>
         ))}
       </tbody>
-    </Table> : <Alert bsStyle="warning">No YogaClasses yet!</Alert>}
+    </Table> : <Alert bsStyle="warning">No Yoga Classes yet!</Alert>}
   </div>
 ) : <Loading />);
 

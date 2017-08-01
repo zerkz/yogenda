@@ -66,7 +66,7 @@ const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading
           </tr>
         ))}
       </tbody>
-    </Table> : <Alert bsStyle="warning">No yogaEvents yet!</Alert>}
+    </Table> : <Alert bsStyle="warning">No Yoga Events yet!</Alert>}
   </div>
 ) : <Loading />);
 
