@@ -6,14 +6,8 @@ import './Index.scss';
 const Index = () => (
   <div className="Index">
     <img
-      src="/yoga_bear.jpg"
-      alt="Clever Beagle"
+      src="/yogenda_logo.svg"
     />
-    <h1>Yogenda</h1>
-    <p>Flexible Yoga Scheduling</p>
-    <div>
-      <Button bsStyle="success" href="http://cleverbeagle.com/pup">Read the docs.... yo.</Button>
-    </div>
   </div>
 );
 

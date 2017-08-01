@@ -65,30 +65,30 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
     </div>
     <Grid className="yoga-info-grid">
       <Row>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Instructor:</span>
           {ownerProfile.profile && ownerProfile.profile.name}
         </Col>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Date:</span>
           {moment.tz(doc.startsAt, moment.tz.guess())
             .format("dddd, MMMM Do YYYY, h:mm:ss a z")}
         </Col>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Duration (Minutes):</span>
           {doc.durationInMinutes}
         </Col>
       </Row>
       <Row>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Max Attendees:</span>
           {doc.maxAttendees}
         </Col>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Location:</span>
           {doc.location}
         </Col>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Additional Information:</span>
           {doc.additionalInformation}
         </Col>
@@ -102,7 +102,7 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
       </Row>
       <Row>
          <Col xs={12} md={12} lg={12}>
-            <h3>Yogis</h3>
+            <h3>Yogis:</h3>
          </Col>
       </Row>
       <Row>
@@ -112,15 +112,16 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
             })
           : <Col xs={12} md={12} lg={12} className="text-center"><h3>No Signups Yet!</h3></Col>}
       </Row>
+      <br/>
       <Row>
          <Col xs={12} md={12} lg={12} className="text-center">
             { 
               //man this is dirty. needs refactor bad.
-              doc.attendees.length >= doc.maxAttendees ? 
-                <h3>No more spots left :(</h3> :
                   _.some(doc.attendees, { id : Meteor.userId() }) ? 
                   <Button bsStyle="danger" onClick={() => dropOff(doc._id)}>Drop Out</Button>
-                  : <Button bsStyle="success" onClick={() => signUp(doc._id)}>Sign Up!</Button>  
+                  : doc.attendees.length >= doc.maxAttendees ? 
+                  <h3>No more spots left :(</h3> : 
+                  <Button bsStyle="success" onClick={() => signUp(doc._id)}>Sign Up!</Button>  
             } 
          </Col>
       </Row>

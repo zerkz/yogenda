@@ -43,15 +43,15 @@ const renderYogaClass = (doc, match, history) => (doc ? (
         </Col>
       </Row>
       <Row>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Max Attendees:</span>
           {doc.maxAttendees}
         </Col>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Location:</span>
           {doc.location}
         </Col>
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Duration (Minutes):</span>
           {doc.durationInMinutes}
         </Col>

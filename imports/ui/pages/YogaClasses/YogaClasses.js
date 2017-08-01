@@ -33,18 +33,15 @@ const YogaClasses = ({ loading, YogaClasses, match, history }) => (!loading ? (
       <thead>
         <tr>
           <th>Title</th>
+          <th />
+          <th />
           <th>Last Updated</th>
           <th>Created</th>
-          <th />
-          <th />
         </tr>
       </thead>
       <tbody>
         {YogaClasses.map(({ _id, title, createdAt, updatedAt }) => (
           <tr key={_id}>
-            <td>{title}</td>
-            <td>{timeago(updatedAt)}</td>
-            <td>{monthDayYearAtTime(createdAt)}</td>
             <td>
               <Button
                 bsStyle="primary"
@@ -59,6 +56,9 @@ const YogaClasses = ({ loading, YogaClasses, match, history }) => (!loading ? (
                 block
               >Delete</Button>
             </td>
+            <td>{title}</td>
+            <td>{timeago(updatedAt)}</td>
+            <td>{monthDayYearAtTime(createdAt)}</td>
           </tr>
         ))}
       </tbody>

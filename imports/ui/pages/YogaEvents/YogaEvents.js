@@ -35,18 +35,16 @@ const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading
       <thead>
         <tr>
           <th>Title</th>
+          <th />
+          <th />
           <th>Last Updated</th>
           <th>Created</th>
-          <th />
-          <th />
         </tr>
       </thead>
       <tbody>
         {yogaEvents.map(({ _id, title, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
-            <td>{timeago(updatedAt)}</td>
-            <td>{monthDayYearAtTime(createdAt)}</td>
             <td>
               <Button
                 bsStyle="primary"
@@ -63,7 +61,9 @@ const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading
                 Delete</Button>
               </td>
             } 
-          </tr>
+            <td>{timeago(updatedAt)}</td>
+            <td>{monthDayYearAtTime(createdAt)}</td>
+            </tr>
         ))}
       </tbody>
     </Table> : <Alert bsStyle="warning">No Yoga Events yet!</Alert>}
