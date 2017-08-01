@@ -81,7 +81,6 @@ export const signUpForYogaEvent = new ValidatedMethod({
   checkLoggedInError: mustBeLoggedIn,
   run(id) {
     try {
-      console.log(this.userId)
       let yogaEvent = YogaEvents.findOne(id);
       if (_.some(yogaEvent.attendees, {owner : this.userId})) {
         throw "You are already signed up!";
