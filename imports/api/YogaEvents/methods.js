@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import YogaEvents from './YogaEvents';
 import rateLimit from '../../modules/rate-limit';
+import _ from 'lodash';
 
 const mustBeAdmin = {
     roles: ['admin'],
@@ -71,11 +72,66 @@ export const removeYogaEvent = new ValidatedMethod({
   }
 });
 
+export const signUpForYogaEvent = new ValidatedMethod({
+  name: 'yogaEvents.signUp',
+  validate(id) {
+    check(id, String);
+  },
+  mixins: [LoggedInMixin],
+  checkLoggedInError: mustBeLoggedIn,
+  run(id) {
+    try {
+      console.log(this.userId)
+      let yogaEvent = YogaEvents.findOne(id);
+      if (_.some(yogaEvent.attendees, {owner : this.userId})) {
+        throw "You are already signed up!";
+      } else {
+        const user = Meteor.user();
+        const attendee = {
+          id : this.userId,
+          name : user.profile.name,
+          dateAdded : new Date()
+        };
+        //addtoSet is kidna made useless by dateAdded autovalue... refactor?
+        return YogaEvents.update(id, { $addToSet : { 'attendees' : attendee }});
+      }
+    } catch (exception) {
+      console.log(exception);
+      throw new Meteor.Error('500', exception);
+    }
+  }
+});
+
+export const dropOffYogaEvent = new ValidatedMethod({
+  name: 'yogaEvents.dropOff',
+  validate(id) {
+    check(id, String);
+  },
+  mixins: [LoggedInMixin],
+  checkLoggedInError: mustBeLoggedIn,
+  run(id) {
+    try {
+      let yogaEvent = YogaEvents.findOne(id);
+      if (!_.some(yogaEvent.attendees, { id : this.userId})) {
+        throw "You are not signed up for the Yoga Event to begin with.";
+      } else {
+        //addtoSet is kidna made useless by dateAdded autovalue... refactor?
+        return YogaEvents.update(id, { $pull : { 'attendees' : { id : this.userId } }}).modifiedCount;
+      }
+    } catch (exception) {
+      console.log(exception);
+      throw new Meteor.Error('500', exception);
+    }
+  }
+});
+
 rateLimit({
   methods: [
     'yogaEvents.insert',
     'yogaEvents.update',
     'yogaEvents.remove',
+    'yogaEvents.signUp',
+    'yogaEvents.dropOff',
   ],
   limit: 5,
   timeRange: 1000,

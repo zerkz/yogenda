@@ -27,14 +27,25 @@ const AttendeeSchema = new SimpleSchema({
     type: String,
     label: 'The ID of the attendee.',
   },
-  dateAdded: {
+  name: {
     type: String,
-    label: 'The date this yogaEvent was created.',
+    label: "The name of the attendee"
+  },
+  dateAdded: {
+    type: Date,
+    label: 'The date this attendee was added.',
+    autoValue: function() {
+      if (this.insert || this.update) {
+        return new Date();
+      }
+    }
   },
   muscleGroups : {
     type : Array,
     label : 'The muscle groups requested to be worked on.',
-    allowedValues : ['arms','chest','head','legs']
+    allowedValues : ['biceps','triceps','shoulders','quads', 'calves',
+     'neck', 'upper back', 'lower back', 'glutes'],
+     optional:true
   },
   "muscleGroups.$": {
     type : String
@@ -77,6 +88,7 @@ let eventsSchema = _.assign(YogaClassesSchema, {
   startsAt: {
     type: Date,
     label: 'The date this Yoga Event starts',
+    defaultValue: new Date()
   },
   additionalInformation : {
     type: String,

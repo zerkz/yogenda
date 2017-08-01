@@ -30,8 +30,7 @@ const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading
       <h4 className="pull-left">Yoga Events</h4>
       <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add YogaEvent</Link>
       </div>
-    }
-    
+    } 
     {yogaEvents.length ? <Table responsive>
       <thead>
         <tr>
@@ -55,13 +54,15 @@ const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading
                 block
               >View</Button>
             </td>
-            <td>
+            {roles.includes('admin') && 
+              <td>
               <Button
                 bsStyle="danger"
                 onClick={() => handleRemove(_id)}
-                block
-              >Delete</Button>
-            </td>
+                block>
+                Delete</Button>
+              </td>
+            } 
           </tr>
         ))}
       </tbody>

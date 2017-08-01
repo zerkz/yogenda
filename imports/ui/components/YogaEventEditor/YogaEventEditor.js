@@ -29,7 +29,7 @@ class YogaEventEditor extends React.Component {
   onYogaClassSelect() {
     let selIndex = this.yogaClassSelect.selectedIndex;
     if (selIndex > 0) {
-      let selectedYogaClass = _.omit(this.props.yogaClasses[selIndex], eventOmitFields);
+      let selectedYogaClass = _.omit(this.props.yogaClasses[selIndex - 1], eventOmitFields);
       this.setState({
         model : selectedYogaClass
       });
@@ -42,6 +42,10 @@ class YogaEventEditor extends React.Component {
     const methodToCall = existingYogaEvent ? 'yogaEvents.update' : 'yogaEvents.insert';
 
     if (existingYogaEvent) doc._id = existingYogaEvent;
+    if (doc && !doc.startsAt) {
+      //giant hack because default values for dates don't submit in uniforms?
+      doc.startsAt = new Date();
+    }
 
     Meteor.call(methodToCall, doc, (error, yogaEventId) => {
       if (error) { 
