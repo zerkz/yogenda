@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonToolbar, ButtonGroup, Button, 
   Grid, Row, Col } from 'react-bootstrap';
+import { If, Choose, When, Otherwise } from 'jsx-control-statements';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -114,15 +115,18 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
       </Row>
       <br/>
       <Row>
-         <Col xs={12} md={12} lg={12} className="text-center">
-            { 
-              //man this is dirty. needs refactor bad.
-                  _.some(doc.attendees, { id : Meteor.userId() }) ? 
-                  <Button bsStyle="danger" onClick={() => dropOff(doc._id)}>Drop Out</Button>
-                  : doc.attendees.length >= doc.maxAttendees ? 
-                  <h3>No more spots left :(</h3> : 
-                  <Button bsStyle="success" onClick={() => signUp(doc._id)}>Sign Up!</Button>  
-            } 
+         <Col xs={12} md={12} lg={12} className="text-center"> 
+           <Choose>
+            <When condition={_.some(doc.attendees, { id : Meteor.userId() })}>
+              <Button bsStyle="danger" onClick={() => dropOff(doc._id)}>Drop Out</Button>
+            </When>
+            <When condition={doc.attendees.length >= doc.maxAttendees}>
+              <h3>No more spots left :(</h3>
+            </When>
+            <Otherwise>
+              <Button bsStyle="success" onClick={() => signUp(doc._id)}>Sign Up!</Button>
+            </Otherwise>
+           </Choose>
          </Col>
       </Row>
     </Grid>
