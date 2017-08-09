@@ -49,20 +49,28 @@ const dropOff = (id) => {
   }
 };
 
-const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
+const renderYogaEvent = (doc, match, history, roles, ownerProfile) => {
+  //this sort is porbably not exactly required, 
+  //but relying on insertion order is something im too lazy to process right now...
+  const sortedYogis = _.orderBy(doc.attendees, 'dateAdded', 'desc');
+  const maxAttendees = doc.maxAttendees;
+  const attendees = sortedYogis.slice(0, maxAttendees);
+  const waitList = sortedYogis.slice(maxAttendees, doc.attendees.length);
+
+  return (doc ? (
   <div className="ViewYogaEvent">
     <div className="page-header clearfix">
       <h4 className="pull-left">{ doc && doc.title }</h4>
-      {roles.includes['admin'] && 
-      <ButtonToolbar className="pull-right">
-        <ButtonGroup bsSize="small">
-          <Button bsStyle="success" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
-          <Button bsStyle="success" onClick={() => handleRemove(doc._id, history)}>
-            Delete
-          </Button>
-        </ButtonGroup>
-      </ButtonToolbar>
-      }
+      <If condition={roles.includes['admin']} >
+        <ButtonToolbar className="pull-right">
+          <ButtonGroup bsSize="small">
+            <Button bsStyle="success" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
+            <Button bsStyle="success" onClick={() => handleRemove(doc._id, history)}>
+              Delete
+            </Button>
+          </ButtonGroup>
+        </ButtonToolbar>
+      </If>
     </div>
     <Grid className="yoga-info-grid">
       <Row>
@@ -83,7 +91,7 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
       <Row>
         <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Max Attendees:</span>
-          {doc.maxAttendees}
+          {maxAttendees}
         </Col>
         <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Location:</span>
@@ -101,18 +109,6 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
             <a href={doc.spotifyURL}>{doc.spotifyURL}</a>}
         </Col>
       </Row>
-      <Row>
-         <Col xs={12} md={12} lg={12}>
-            <h3>Yogis:</h3>
-         </Col>
-      </Row>
-      <Row>
-         {doc.attendees.length > 0 ? 
-            doc.attendees.map((attendee, i) => {
-              return <Col key={i} xs={12} md={6} lg={4}>{attendee.name}</Col>
-            })
-          : <Col xs={12} md={12} lg={12} className="text-center"><h3>No Signups Yet!</h3></Col>}
-      </Row>
       <br/>
       <Row>
          <Col xs={12} md={12} lg={12} className="text-center"> 
@@ -120,8 +116,8 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
             <When condition={_.some(doc.attendees, { id : Meteor.userId() })}>
               <Button bsStyle="danger" onClick={() => dropOff(doc._id)}>Drop Out</Button>
             </When>
-            <When condition={doc.attendees.length >= doc.maxAttendees}>
-              <h3>No more spots left :(</h3>
+            <When condition={attendees.length >= maxAttendees}>
+              <Button bsStyle="success" onClick={() => signUp(doc._id)}>Waitlist Sign Up!</Button>
             </When>
             <Otherwise>
               <Button bsStyle="success" onClick={() => signUp(doc._id)}>Sign Up!</Button>
@@ -129,10 +125,43 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => (doc ? (
            </Choose>
          </Col>
       </Row>
+      <Row>
+         <Col xs={12} md={12} lg={12}>
+            <h3>Yogis:</h3>
+         </Col>
+      </Row>
+      <Row>
+        <Choose>
+          <When condition={attendees.length > 0}> 
+            {  
+              attendees.map((attendee, i) => {
+                return <Col key={i} xs={12} md={6} lg={4}>{attendee.name}</Col>
+              })
+            }
+          </When>
+          <Otherwise>
+            <Col xs={12} md={12} lg={12} className="text-center"><h3>No Signups Yet!</h3></Col>
+          </Otherwise>
+        </Choose>
+      </Row>
+      <If condition={waitList.length > 0}>
+        <Row>
+         <Col xs={12} md={12} lg={12}>
+            <h3>Waitlist:</h3>
+         </Col>
+        </Row>
+        <Row>
+            {  
+              waitList.map((attendee, i) => {
+                return <Col key={i} xs={12} md={6} lg={4}>{attendee.name}</Col>
+              })
+            }
+        </Row>
+      </If>
     </Grid>
-    
   </div>
 ) : <NotFound />);
+}
 
 const ViewYogaEvent = ({ loading, doc, match, history, roles, ownerProfile }) => (
   !loading ? renderYogaEvent(doc, match, history, roles, ownerProfile) : <Loading />

@@ -67,7 +67,7 @@ let eventsSchema = _.assign(YogaClassesSchema, {
   },
   attendees: {
     type: Array,
-    "label" : "List of attendees",
+    "label" : "List of Attendees",
     autoValue: function() {
       if (this.isInsert) {
         return [];

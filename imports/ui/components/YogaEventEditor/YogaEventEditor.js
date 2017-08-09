@@ -13,7 +13,8 @@ import AutoForm from 'uniforms-bootstrap3/AutoForm';
 import YogaEvents from '../../../api/YogaEvents/YogaEvents';
 
 
-const eventOmitFields = ['_id','owner', 'createdAt', 'updatedAt', 'attendees'];
+const eventOmitFields = 
+  ['_id','owner', 'createdAt', 'updatedAt', 'attendees', 'waitlisted_attendees'];
 const YogaEventsSchema = YogaEvents.simpleSchema().omit(...eventOmitFields);
 
 class YogaEventEditor extends React.Component {
