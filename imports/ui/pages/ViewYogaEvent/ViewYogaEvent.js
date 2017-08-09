@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonToolbar, ButtonGroup, Button, 
   Grid, Row, Col } from 'react-bootstrap';
-import { If, Choose, When, Otherwise } from 'jsx-control-statements';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
