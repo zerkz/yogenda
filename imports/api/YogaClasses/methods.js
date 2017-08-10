@@ -25,7 +25,7 @@ const mustBeAdmin = {
 
 export const insertYogaClass = new ValidatedMethod({
   name: 'yogaClasses.insert',
-  validate: schema.validator(),
+  validate: schema.omit('_id').validator(),
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,

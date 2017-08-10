@@ -51,16 +51,15 @@ const dropOff = (id) => {
 const renderYogaEvent = (doc, match, history, roles, ownerProfile) => {
   //this sort is porbably not exactly required, 
   //but relying on insertion order is something im too lazy to process right now...
-  const sortedYogis = _.orderBy(doc.attendees, 'dateAdded', 'desc');
+  const sortedYogis = _.orderBy(doc.attendees, 'dateAdded', 'asc');
   const maxAttendees = doc.maxAttendees;
   const attendees = sortedYogis.slice(0, maxAttendees);
   const waitList = sortedYogis.slice(maxAttendees, doc.attendees.length);
-
   return (doc ? (
   <div className="ViewYogaEvent">
     <div className="page-header clearfix">
       <h4 className="pull-left">{ doc && doc.title }</h4>
-      <If condition={roles.includes['admin']} >
+      <If condition={roles.includes('admin')} >
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
             <Button bsStyle="success" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
@@ -175,7 +174,7 @@ ViewYogaEvent.propTypes = {
   ownerProfile : PropTypes.object.isRequired
 };
 
-export default createContainer(({ match }) => {
+export default createContainer(({ match, roles }) => {
   const eventId = match.params._id;
   const eventSub = Meteor.subscribe('yogaEvents.view', eventId);
   const yogaEvent = YogaEvents.findOne(eventId);
@@ -188,5 +187,6 @@ export default createContainer(({ match }) => {
     loading: !eventSub.ready() && (!yogaEvent || (!eventOwnerSub && !eventOwnerSub.ready())),
     doc: yogaEvent || {},
     ownerProfile : ownerProfile || {},
+    roles : roles
   };
 }, ViewYogaEvent);

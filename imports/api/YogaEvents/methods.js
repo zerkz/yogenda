@@ -25,7 +25,7 @@ const schema = YogaEvents.simpleSchema();;
 
 export const insertYogaEvent = new ValidatedMethod({
   name: 'yogaEvents.insert',
-  validate: schema.omit('owner', 'createdAt', 'updatedAt', 'attendees').validator(),
+  validate: schema.omit('_id','owner', 'createdAt', 'updatedAt', 'attendees').validator(),
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,
@@ -33,7 +33,7 @@ export const insertYogaEvent = new ValidatedMethod({
     try {
       return YogaEvents.insert({ owner: this.userId, ...yogaEvent })
     } catch (exception) {
-      throw new Meteor.Error('500', exception);
+      throw new Meteor.Error('500', exception.toString());
     }
   }
 });
@@ -46,11 +46,11 @@ export const updateYogaEvent = new ValidatedMethod({
   checkLoggedInError: mustBeLoggedIn,
   run(yogaEvent) {
       try {
-      const yogaEventId = doc._id;
-      YogaEvents.update(yogaEventId, { $set: doc });
+      const yogaEventId = yogaEvent._id;
+      YogaEvents.update(yogaEventId, { $set: yogaEvent });
       return yogaEventId; // Return _id so we can redirect to yogaEvent after update.
     } catch (exception) {
-      throw new Meteor.Error('500', exception);
+      throw new Meteor.Error('500', exception.toString());
     }
   }
 });

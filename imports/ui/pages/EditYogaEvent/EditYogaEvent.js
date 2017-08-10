@@ -15,7 +15,7 @@ const EditYogaEvent = ({ doc, history, yogaClasses }) => (doc ? (
 ) : <NotFound />);
 
 EditYogaEvent.propTypes = {
-  doc: PropTypes.object.isRequired,
+  doc: PropTypes.object,
   history: PropTypes.object.isRequired,
 };
 

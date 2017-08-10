@@ -54,6 +54,10 @@ const AttendeeSchema = new SimpleSchema({
 
 //extend schema object with overridable Yoga Class schema.
 let eventsSchema = _.assign(YogaClassesSchema, {
+  _id: {
+    type: String,
+    label: 'Primary Key of the document.',
+  },
   owner: {
     type: String,
     label: 'The ID of the user this Yoga Event belongs to.',

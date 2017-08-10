@@ -18,6 +18,10 @@ YogaClasses.deny({
 });
 
 YogaClasses.schema = new SimpleSchema({
+  _id: {
+    type: String,
+    label: 'Primary Key of the document.',
+  },
   title: {
     type: String,
     label: 'Title',
