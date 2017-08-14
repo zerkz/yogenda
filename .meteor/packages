@@ -34,6 +34,5 @@ ddp-rate-limiter@1.0.7
 dynamic-import@0.1.1
 static-html
 wiseguyeh:accounts-azure-active-directory
-force-ssl
 mdg:validated-method
 tunifight:loggedin-mixin
