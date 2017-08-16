@@ -8,6 +8,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
 import YogaEventsCollection from '../../../api/YogaEvents/YogaEvents';
 import Loading from '../../components/Loading/Loading';
+import moment from 'moment-timezone';
 
 import './YogaEvents.scss';
 
@@ -37,12 +38,12 @@ const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading
           <th>Title</th>
           <th />
           <th />
-          <th>Last Updated</th>
-          <th>Created</th>
+          <th>Starts At</th>
+          <th>Yogis</th>
         </tr>
       </thead>
       <tbody>
-        {yogaEvents.map(({ _id, title, createdAt, updatedAt }) => (
+        {yogaEvents.map(({ _id, title, startsAt, attendees, maxAttendees }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>
@@ -61,8 +62,9 @@ const YogaEvents = ({ loading, yogaEvents, match, history, roles }) => (!loading
                 Delete</Button>
               </td>
             } 
-            <td>{timeago(updatedAt)}</td>
-            <td>{monthDayYearAtTime(createdAt)}</td>
+            <td>{moment.tz(startsAt, moment.tz.guess())
+            .format("dddd, MM/DD/YYYY, h:mm:ss a z")}</td>
+            <td>{attendees.length} / {maxAttendees}</td>
             </tr>
         ))}
       </tbody>

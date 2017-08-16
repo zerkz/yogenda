@@ -5,7 +5,8 @@ import rateLimit from '../../modules/rate-limit';
 import { LoggedInMixin } from 'meteor/tunifight:loggedin-mixin'
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
-const schema = YogaClasses.simpleSchema().omit('owner','createdAt','updatedAt');
+const insertSchema = YogaClasses.simpleSchema().omit('_id', 'owner','createdAt','updatedAt');
+const updateSchema = YogaClasses.simpleSchema();
 
 const mustBeAdmin = {
     roles: ['admin'],
@@ -25,7 +26,7 @@ const mustBeAdmin = {
 
 export const insertYogaClass = new ValidatedMethod({
   name: 'yogaClasses.insert',
-  validate: schema.omit('_id').validator(),
+  validate: insertSchema.validator(),
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,
@@ -41,7 +42,7 @@ export const insertYogaClass = new ValidatedMethod({
 
 export const updateYogaClass = new ValidatedMethod({
   name: 'yogaClasses.update',
-  validate: schema.validator(),
+  validate: updateSchema.validator(),
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,
@@ -64,7 +65,7 @@ export const removeYogaClass = new ValidatedMethod({
   mixins: [LoggedInMixin],
   checkRoles: mustBeAdmin,
   checkLoggedInError: mustBeLoggedIn,
-  run({ yogaClassId }) {
+  run(yogaClassId) {
     try {
       return YogaClasses.remove(yogaClassId);
     } catch (exception) {

@@ -36,3 +36,4 @@ static-html
 wiseguyeh:accounts-azure-active-directory
 mdg:validated-method
 tunifight:loggedin-mixin
+quackware:ical-generator

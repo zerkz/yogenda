@@ -62,8 +62,8 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => {
       <If condition={roles.includes('admin')} >
         <ButtonToolbar className="pull-right">
           <ButtonGroup bsSize="small">
-            <Button bsStyle="success" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
-            <Button bsStyle="success" onClick={() => handleRemove(doc._id, history)}>
+            <Button bsStyle="warning" onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>
+            <Button bsStyle="danger" onClick={() => handleRemove(doc._id, history)}>
               Delete
             </Button>
           </ButtonGroup>

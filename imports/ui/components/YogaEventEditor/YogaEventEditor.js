@@ -7,10 +7,14 @@ import DateTime from 'react-datetime';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import _ from 'lodash'
+//need this for material ui to work.
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // Choose your theme
-import AutoForm from 'uniforms-bootstrap3/AutoForm';
+import AutoForm from 'uniforms-material/AutoForm';
+
 // A compatible schema
 import YogaEvents from '../../../api/YogaEvents/YogaEvents';
+import moment from 'moment-timezone';
 
 
 const eventOmitFields = 
@@ -24,7 +28,7 @@ class YogaEventEditor extends React.Component {
     this.state = {
       model : this.props.doc
     };
-
+    console.log(moment().toDate());
   }
 
   onYogaClassSelect() {
@@ -46,7 +50,7 @@ class YogaEventEditor extends React.Component {
     if (doc && !doc.startsAt) {
       //giant hack because default values for dates don't submit in uniforms?
       doc.startsAt = new Date();
-    }
+    } 
 
     Meteor.call(methodToCall, doc, (error, yogaEventId) => {
       if (error) { 
@@ -62,22 +66,24 @@ class YogaEventEditor extends React.Component {
 
   render() {
     return (
-      <FormGroup>
-        <Panel>
-          <h4>Yoga Class Templates</h4>
-          <FormControl componentClass='select' placeholder='No Templates Available' 
-          onChange={this.onYogaClassSelect.bind(this)}
-          inputRef={el => this.yogaClassSelect = el}>
-          <option key='placeholder'>Choose a Yoga Class Template</option>
-            {
-              this.props.yogaClasses.map((yogaClass, i) => {
-                return <option key={i} >{yogaClass.title}</option>
-              })
-            }
-          </FormControl>
-        </Panel>
-        <AutoForm ref={ref => this.form = ref} schema={YogaEventsSchema} onSubmit={this.handleSubmit.bind(this)} model={this.state.model} />
-      </FormGroup>
+      <MuiThemeProvider>
+        <FormGroup>
+          <Panel>
+            <h4>Yoga Class Templates</h4>
+            <FormControl componentClass='select' placeholder='No Templates Available' 
+            onChange={this.onYogaClassSelect.bind(this)}
+            inputRef={el => this.yogaClassSelect = el}>
+            <option key='placeholder'>Choose a Yoga Class Template</option>
+              {
+                this.props.yogaClasses.map((yogaClass, i) => {
+                  return <option key={i} >{yogaClass.title}</option>
+                })
+              }
+            </FormControl>
+          </Panel>
+          <AutoForm ref={ref => this.form = ref} schema={YogaEventsSchema} onSubmit={this.handleSubmit.bind(this)} model={this.state.model} />     
+        </FormGroup>
+      </MuiThemeProvider>
     )
   }
 }

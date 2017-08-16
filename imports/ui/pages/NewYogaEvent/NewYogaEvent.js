@@ -5,8 +5,6 @@ import YogaClasses from '../../../api/YogaClasses/YogaClasses';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
-// Choose your theme
-import AutoForm from 'uniforms-bootstrap3/AutoForm';
 // A compatible schema
 import YogaEvents from '../../../api/YogaEvents/YogaEvents';
 

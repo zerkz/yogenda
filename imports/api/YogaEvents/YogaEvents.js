@@ -33,12 +33,7 @@ const AttendeeSchema = new SimpleSchema({
   },
   dateAdded: {
     type: Date,
-    label: 'The date this attendee was added.',
-    autoValue: function() {
-      if (this.insert || this.update) {
-        return new Date();
-      }
-    }
+    label: 'The date this attendee was added.'
   },
   muscleGroups : {
     type : Array,

@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 // Choose your theme
-import AutoForm from 'uniforms-bootstrap3/AutoForm';
+//need this for material ui to work.
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// Choose your theme
+import AutoForm from 'uniforms-material/AutoForm';
 // A compatible schema
 import YogaClasses from '../../../api/YogaClasses/YogaClasses';
 
@@ -36,7 +39,14 @@ class YogaClassEditor extends React.Component {
 
   render() {
     const { doc } = this.props;
-    return (<AutoForm ref={ref => this.form = ref} schema={YogaClassesUISchema} onSubmit={this.handleSubmit.bind(this)} model={doc} />);
+    return (
+      <MuiThemeProvider>
+        <AutoForm ref={ref => this.form = ref} 
+        schema={YogaClassesUISchema} 
+        onSubmit={this.handleSubmit.bind(this)} 
+        model={doc} />
+      </MuiThemeProvider>
+    );
   }
 }
 
