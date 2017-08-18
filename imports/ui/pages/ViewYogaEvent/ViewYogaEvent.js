@@ -76,11 +76,15 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => {
           <span className='event-attr'>Instructor:</span>
           {ownerProfile.profile && ownerProfile.profile.name}
         </Col>
+      </Row>
+      <Row>
         <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Date:</span>
           {moment.tz(doc.startsAt, moment.tz.guess())
             .format("dddd, MMMM Do YYYY, h:mm:ss a z")}
         </Col>
+      </Row>
+      <Row>
         <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Duration (Minutes):</span>
           {doc.durationInMinutes}
@@ -88,13 +92,23 @@ const renderYogaEvent = (doc, match, history, roles, ownerProfile) => {
       </Row>
       <Row>
         <Col xs={12} md={12} lg={12}>
+          <span className='event-attr'>Description:</span>
+          {doc.description}
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Max Attendees:</span>
           {maxAttendees}
         </Col>
+      </Row>
+      <Row>
         <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Location:</span>
           {doc.location}
         </Col>
+      </Row>
+      <Row>
         <Col xs={12} md={12} lg={12}>
           <span className='event-attr'>Additional Information:</span>
           {doc.additionalInformation}
