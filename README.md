@@ -1,5 +1,3 @@
-# Yogenda.
-
 ![Yogenda Logo](https://cdn.rawgit.com/zerkz/yogenda/master/public/yogenda_logo.svg)
 
 A simple Yoga scheduler with signup functionality. 
