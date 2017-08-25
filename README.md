@@ -1,11 +1,15 @@
-### YOGENDA.  
-What's your YOGA AGENDA?
+### Yogenda.
 
-DO YOU KNOW?
+A simple Yoga scheduler with signup functionality. 
 
-You will soon.
+## Features
 
-![DEAL WITH ITTTTTTT](http://vignette3.wikia.nocookie.net/powerlisting/images/0/02/Bach-deal-with-it.jpg/revision/latest?cb=20130822031533)
+//TODO
+
+## Origins
+
+Yogenda was started at a [uShip](https://www.uship.com) Hackathon to help out with organization around our weekly Yoga classes, held at uShip. 
+
 
 ---
 Based upon the Meteor starter kit [Pup](http://cleverbeagle.com/pup)
