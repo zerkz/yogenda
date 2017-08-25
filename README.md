@@ -1,6 +1,6 @@
 # Yogenda.
 
-![Yogenda Logo](https://raw.githubusercontent.com/zerkz/yogenda/master/public/yogenda_logo.svg)
+![Yogenda Logo](https://cdn.rawgit.com/zerkz/yogenda/master/public/yogenda_logo.svg)
 
 A simple Yoga scheduler with signup functionality. 
 
