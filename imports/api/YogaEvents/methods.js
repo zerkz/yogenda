@@ -20,7 +20,7 @@ const mustBeLoggedIn = {
 };
 
 
-const schema = YogaEvents.simpleSchema();;
+const schema = YogaEvents.simpleSchema().omit('ical');
 
 
 export const insertYogaEvent = new ValidatedMethod({
@@ -95,7 +95,6 @@ export const signUpForYogaEvent = new ValidatedMethod({
         return YogaEvents.update(id, { $addToSet : { 'attendees' : attendee }});
       }
     } catch (exception) {
-      console.log(exception);
       throw new Meteor.Error('500', exception);
     }
   }

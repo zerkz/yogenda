@@ -1,11 +1,14 @@
 /* eslint-disable consistent-return */
 
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import YogaClasses from '../YogaClasses/YogaClasses';
 import SimpleSchema from 'simpl-schema';
 import uniforms from 'uniforms';
 import _ from 'lodash';
+import ical from 'ical-generator';
 
+const cal = ical({domain: 'yogenda.com', name: 'Yogenda'});
 const YogaEvents = new Mongo.Collection('YogaEvents');
 const YogaClassesSchema = _.clone(YogaClasses.simpleSchema()._schema);
 
@@ -93,6 +96,29 @@ let eventsSchema = _.assign(YogaClassesSchema, {
     type: String,
     label : "Additional information about the yoga event.",
     optional : true
+  },
+  ical : {
+    type: Object,
+    label: "An ical (calendar) file representing the event",
+    optional: true,
+    autoValue : (doc) => {
+      if (Meteor.isServer) {
+        const title = doc.title;
+        const start = doc.startsAt;
+        //add the duration to get the end.
+        const end = new Date((start.getTime() + (doc.durationInMinutes * 60 * 1000)));
+        const instructorName = Meteor.users.findOne(doc.owner);
+        let icalEvent = cal.createEvent({
+            start: start,
+            end: end,
+            timestamp: new Date(),
+            summary: title
+        });
+        return icalEvent.toJson(); 
+      } else {
+        this.unset();
+      }
+    }
   }
 });
 

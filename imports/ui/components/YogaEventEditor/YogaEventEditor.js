@@ -18,7 +18,7 @@ import moment from 'moment-timezone';
 
 
 const eventOmitFields = 
-  ['_id','owner', 'createdAt', 'updatedAt', 'attendees', 'waitlisted_attendees'];
+  ['_id', 'owner', 'createdAt', 'updatedAt','ical', 'attendees', 'waitlisted_attendees'];
 const YogaEventsSchema = YogaEvents.simpleSchema().omit(...eventOmitFields);
 
 class YogaEventEditor extends React.Component {
