@@ -3,7 +3,7 @@ import { check } from 'meteor/check';
 import YogaEvents from '../YogaEvents';
 
 Meteor.publish('yogaEvents', function yogaEvents() {
-  return YogaEvents.find();
+  return YogaEvents.find({}, { limit : 10, sort : { startsAt : -1 }});
 });
 
 // Note: yogaEvents.view is also used when editing an existing yogaEvent.
